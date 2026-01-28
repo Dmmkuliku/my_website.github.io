@@ -4,8 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dm_mkuliku Entreprises - Raymond Tungaraza | Data Analyst Tanzania</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap & Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- AOS (Animate On Scroll) CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"><!-- [web:31][web:38][web:44] -->
+
     <style>
         :root {
             --primary-color: #0d6efd;
@@ -14,215 +23,367 @@
             --whatsapp: #25D366;
             --light-bg: #f8f9fa;
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; }
+
+        body {
+            font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.7;
+            background: #f3f4f6;
+            color: #111827;
+        }
+
         html { scroll-behavior: smooth; }
 
         /* NAVBAR */
-        .navbar { box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .navbar-brand { font-size: 1.3rem !important; }
+        .navbar { box-shadow: 0 2px 4px rgba(0,0,0,0.08); }
+        .navbar-brand { font-size: 1.3rem !important; letter-spacing: 0.03em; }
 
         /* HERO SECTION */
-        .hero { 
-            background: linear-gradient(135deg, var(--dark-bg), var(--accent)); 
-            color: white; padding: 100px 20px; text-align: center; 
+        .hero {
+            background: radial-gradient(circle at top left, #1d4ed8, #0b1120);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
-        .hero h1 { font-size: clamp(2rem, 8vw, 3.5rem); font-weight: 700; margin-bottom: 20px; }
-        .hero p { font-size: clamp(1rem, 3vw, 1.25rem); margin-bottom: 20px; }
-        .hero .btn { margin: 5px; }
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(96,165,250,0.25), transparent);
+            top: -100px;
+            left: -100px;
+            pointer-events: none;
+        }
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(129,140,248,0.2), transparent);
+            bottom: -120px;
+            right: -80px;
+            pointer-events: none;
+        }
+        .hero h1 {
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 0.04em;
+        }
+        .hero p {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            margin-bottom: 10px;
+        }
+        .hero .lead {
+            font-weight: 400;
+        }
+        .hero .btn {
+            margin: 5px;
+            border-radius: 999px;
+            padding-inline: 24px;
+            transition: all 0.25s ease;
+        }
+        .hero .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37,99,235,0.4);
+        }
+        .hero .btn-outline-light:hover {
+            background-color: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
 
         /* ABOUT SECTION */
-        .about-section { padding: 80px 20px; background: white; }
-        .about-section h2 { font-size: clamp(1.8rem, 6vw, 2.5rem); margin-bottom: 40px; font-weight: 700; text-align: center; }
-        .skill-bar { background: #e9ecef; height: 10px; border-radius: 5px; overflow: hidden; margin-top: 5px; }
-        .skill-progress { height: 100%; background: linear-gradient(90deg, var(--primary-color), #6610f2); transition: width 2s ease-in-out; }
+        .about-section {
+            padding: 80px 20px;
+            background: white;
+        }
+        .about-section h2 {
+            font-size: clamp(1.8rem, 6vw, 2.5rem);
+            margin-bottom: 40px;
+            font-weight: 700;
+            text-align: center;
+        }
+        .about-section h2 span {
+            color: var(--primary-color);
+        }
+        .skill-bar {
+            background: #e5e7eb;
+            height: 10px;
+            border-radius: 999px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), #6610f2);
+            transition: width 2s ease-in-out;
+        }
 
-        /* ====== SERVICE SECTION - CUSTOM DESIGN ====== */
+        /* SECTION WRAPPERS */
+        section {
+            scroll-margin-top: 80px;
+        }
+
+        /* SERVICE SECTION */
+        .section-title {
+            font-size: clamp(2rem, 8vw, 2.6rem);
+            margin-bottom: 16px;
+            text-align: center;
+            font-weight: 700;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: #6b7280;
+            margin-bottom: 40px;
+            font-size: 0.98rem;
+        }
+
         .service-section {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             padding: 80px 20px;
             color: white;
         }
-        .service-section h2 {
-            font-size: clamp(2rem, 8vw, 3rem);
-            margin-bottom: 50px;
-            text-align: center;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
+
         .service-card {
-            background: rgba(255,255,255,0.95);
-            color: #333;
-            border-radius: 15px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-            border-left: 5px solid var(--primary-color);
-            min-height: 400px;
+            background: rgba(255,255,255,0.97);
+            color: #111827;
+            border-radius: 18px;
+            padding: 32px 26px;
+            text-align: left;
+            box-shadow: 0 12px 30px rgba(15,23,42,0.35);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            border: 1px solid rgba(148,163,184,0.35);
+            min-height: 320px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            gap: 14px;
         }
         .service-card:hover {
-            transform: translateY(-15px) scale(1.05);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-            border-left: 5px solid #ff6b6b;
+            transform: translateY(-12px);
+            box-shadow: 0 18px 45px rgba(15,23,42,0.45);
+            border-color: var(--primary-color);
         }
         .service-card i {
-            font-size: 60px;
+            font-size: 40px;
             color: var(--primary-color);
-            margin-bottom: 20px;
+            margin-bottom: 4px;
         }
-        .service-card h4 { font-size: 1.5rem; font-weight: 600; margin-bottom: 15px; color: var(--dark-bg); }
-        .service-card p { font-size: 1rem; line-height: 1.8; color: #666; margin-bottom: 20px; }
-        .service-card .btn { background: var(--primary-color); color: white; border: none; transition: all 0.3s; }
-        .service-card .btn:hover { background: #ff6b6b; transform: scale(1.05); }
+        .service-card h4 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        .service-card p {
+            font-size: 0.95rem;
+            color: #4b5563;
+            margin: 0;
+        }
+        .service-card .btn {
+            align-self: flex-start;
+            border-radius: 999px;
+            padding-inline: 20px;
+            margin-top: 8px;
+            font-size: 0.9rem;
+            background: #0f172a;
+            border: none;
+        }
+        .service-card .btn:hover {
+            background: #111827;
+            transform: translateY(-1px);
+        }
 
-        /* ====== PORTFOLIO SECTION - CUSTOM DESIGN ====== */
+        /* PORTFOLIO SECTION */
         .portfolio-section {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background: linear-gradient(135deg, #f97316 0%, #ec4899 100%);
             padding: 80px 20px;
             color: white;
         }
-        .portfolio-section h2 {
-            font-size: clamp(2rem, 8vw, 3rem);
-            margin-bottom: 50px;
-            text-align: center;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
+
         .portfolio-card {
             background: white;
-            border-radius: 15px;
+            border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: all 0.4s ease;
-            color: #333;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            color: #111827;
         }
         .portfolio-card:hover {
-            transform: translateY(-20px) rotate(2deg);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            transform: translateY(-16px);
+            box-shadow: 0 24px 55px rgba(0,0,0,0.32);
+        }
+
+        .portfolio-image-wrapper {
+            position: relative;
+            overflow: hidden;
         }
         .portfolio-card img {
             width: 100%;
             height: 250px;
             object-fit: cover;
-            transition: transform 0.3s;
+            transition: transform 0.35s ease;
         }
-        .portfolio-card:hover img { transform: scale(1.1); }
-        .portfolio-card .card-body {
-            padding: 25px;
-        }
-        .portfolio-card h5 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-        .portfolio-card p { color: #666; margin-bottom: 15px; }
-        .portfolio-badge {
-            display: inline-block;
-            background: var(--primary-color);
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(15,23,42,0.8), rgba(15,23,42,0.1));
+            opacity: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            padding: 16px 18px;
             color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
+            transition: opacity 0.35s ease;
+        }
+        .portfolio-overlay span {
             font-size: 0.85rem;
-            margin-right: 5px;
+            opacity: 0.9;
+        }
+        .portfolio-overlay .view-link {
+            background: rgba(255,255,255,0.18);
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .portfolio-card:hover img {
+            transform: scale(1.08);
+        }
+        .portfolio-card:hover .portfolio-overlay {
+            opacity: 1;
         }
 
-        /* ====== CONTACT SECTION - CUSTOM DESIGN ====== */
+        .portfolio-card .card-body {
+            padding: 24px;
+        }
+        .portfolio-card h5 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--primary-color);
+        }
+        .portfolio-card p {
+            color: #4b5563;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+        .portfolio-badge {
+            display: inline-block;
+            background: #eff6ff;
+            color: #1d4ed8;
+            padding: 4px 12px;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            margin-right: 6px;
+        }
+
+        /* CONTACT SECTION */
         .contact-section {
-            background: linear-gradient(135deg, #2e2e6e 0%, #1a1a4e 100%);
+            background: linear-gradient(135deg, #0f172a 0%, #020617 100%);
             padding: 80px 20px;
             color: white;
         }
-        .contact-section h2 {
-            font-size: clamp(2rem, 8vw, 3rem);
-            margin-bottom: 50px;
-            text-align: center;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
+
         .contact-box {
-            background: rgba(255,255,255,0.95);
-            color: #333;
-            border-radius: 15px;
-            padding: 35px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: all 0.3s;
+            background: rgba(255,255,255,0.97);
+            color: #111827;
+            border-radius: 18px;
+            padding: 32px;
+            box-shadow: 0 12px 35px rgba(15,23,42,0.4);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
-        .contact-box:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+        .contact-box:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 50px rgba(15,23,42,0.5);
+        }
         .contact-box h5 {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             color: var(--primary-color);
         }
         .form-control {
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
             padding: 12px;
-            font-size: 1rem;
-            transition: all 0.3s;
+            font-size: 0.96rem;
+            transition: all 0.2s;
         }
         .form-control:focus {
             border-color: var(--primary-color);
-            box-shadow: 0 0 10px rgba(13,110,253,0.2);
+            box-shadow: 0 0 0 0.2rem rgba(37,99,235,0.15);
         }
         .btn-submit {
             background: linear-gradient(135deg, var(--primary-color), #6610f2);
             color: white;
             border: none;
             padding: 12px 30px;
-            border-radius: 8px;
+            border-radius: 999px;
             font-weight: 600;
-            transition: all 0.3s;
+            transition: all 0.25s;
             width: 100%;
         }
         .btn-submit:hover {
             background: linear-gradient(135deg, #6610f2, var(--primary-color));
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(102,126,234,0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 14px 30px rgba(37,99,235,0.4);
         }
         .contact-info-box {
-            background: rgba(255,255,255,0.1);
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
+            background: rgba(15,23,42,0.9);
+            padding: 18px 18px;
+            border-radius: 14px;
+            margin-bottom: 16px;
             border-left: 4px solid var(--whatsapp);
         }
         .contact-info-box i {
             color: var(--whatsapp);
-            font-size: 24px;
-            margin-right: 15px;
+            font-size: 22px;
+            margin-right: 12px;
         }
 
         /* WHATSAPP & CHATBOT */
         .whatsapp-float, #chatbot-toggle {
             position: fixed;
-            right: 30px;
+            right: 24px;
             border: none;
-            border-radius: 50%;
+            border-radius: 999px;
             color: white;
             cursor: pointer;
             z-index: 9999;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            transition: all 0.3s;
+            box-shadow: 0 6px 16px rgba(15,23,42,0.45);
+            transition: all 0.25s;
             font-weight: 600;
         }
         .whatsapp-float {
-            width: 65px;
-            height: 65px;
-            bottom: 30px;
+            width: 64px;
+            height: 64px;
+            bottom: 24px;
             background: var(--whatsapp);
-            font-size: 32px;
-            line-height: 65px;
+            font-size: 30px;
+            line-height: 64px;
             text-align: center;
-            animation: bounce 2s infinite;
         }
-        .whatsapp-float:hover { color: white !important; transform: scale(1.15) !important; }
-        
+        .whatsapp-float:hover {
+            color: white !important;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(22,163,74,0.5);
+        }
+
+        /* Soft pulse animation for WhatsApp button */
+        .whatsapp-float.pulse-button {
+            animation: pulse 1.3s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        } /* [web:40][web:43] */
+
         #chatbot-toggle {
             width: 60px;
             height: 60px;
@@ -232,12 +393,14 @@
             line-height: 60px;
             text-align: center;
         }
-        #chatbot-toggle:hover { background: linear-gradient(135deg, #6610f2, var(--primary-color)); transform: scale(1.1); }
+        #chatbot-toggle:hover {
+            background: linear-gradient(135deg, #6610f2, var(--primary-color));
+            transform: translateY(-2px);
+        }
 
-        @keyframes bounce { 
-            0%,20%,50%,80%,100%{ transform: translateY(0); } 
-            40%{ transform: translateY(-10px); } 
-            60%{ transform: translateY(-5px); } 
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
         }
 
         /* FOOTER */
@@ -245,54 +408,89 @@
             background: var(--dark-bg);
             color: white;
             padding: 50px 20px 20px;
-            margin-top: 60px;
+            margin-top: 0;
         }
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 26px;
+            margin-bottom: 26px;
         }
-        .footer-section h5 { margin-bottom: 15px; font-weight: 600; }
-        .footer-section p, .footer-section a { font-size: 0.95rem; line-height: 1.8; }
-        .footer-section a { color: #cbd5e1; text-decoration: none; }
+        .footer-section h5 {
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .footer-section p,
+        .footer-section a {
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+        .footer-section a {
+            color: #cbd5e1;
+            text-decoration: none;
+        }
         .footer-section a:hover { color: var(--primary-color); }
-        .social-icons { display: flex; gap: 15px; margin-top: 15px; }
+        .social-icons {
+            display: flex;
+            gap: 14px;
+            margin-top: 14px;
+        }
         .social-icons a {
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
+            border-radius: 999px;
+            background: rgba(255,255,255,0.06);
             color: white;
-            font-size: 18px;
-            transition: all 0.3s;
+            font-size: 17px;
+            transition: all 0.25s;
         }
-        .social-icons a:hover { background: var(--primary-color); transform: scale(1.1); }
+        .social-icons a:hover {
+            background: var(--primary-color);
+            transform: translateY(-1px);
+        }
         .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 20px;
+            border-top: 1px solid rgba(148,163,184,0.3);
+            padding-top: 16px;
             text-align: center;
             color: #94a3b8;
-            font-size: 0.9rem;
-        }
-
-        /* MARQUEE */
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
+            font-size: 0.85rem;
         }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
-            .hero { padding: 60px 15px; }
-            .about-section, .service-section, .portfolio-section, .contact-section {
-                padding: 50px 15px;
+            .hero {
+                padding: 70px 16px;
             }
-            .service-card, .contact-box { padding: 25px 20px; }
-            #chatbot-toggle { bottom: 90px; }
+            .about-section,
+            .service-section,
+            .portfolio-section,
+            .contact-section {
+                padding: 56px 16px;
+            }
+            .service-card,
+            .contact-box {
+                padding: 24px 20px;
+            }
+            #chatbot-toggle {
+                bottom: 90px;
+                right: 18px;
+            }
+            .whatsapp-float {
+                bottom: 18px;
+                right: 18px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
         }
     </style>
 </head>
@@ -318,19 +516,19 @@
     </nav>
 
     <!-- MARQUEE -->
-    <div style="background: linear-gradient(90deg, #0d6efd, #6610f2); padding: 15px 0; overflow: hidden; color: white; font-weight: 700;">
+    <div style="background: linear-gradient(90deg, #0d6efd, #6610f2); padding: 14px 0; overflow: hidden; color: white; font-weight: 600;">
         <div style="display: flex; gap: 40px; animation: scroll 15s linear infinite; white-space: nowrap;">
-            <span style="font-size: 1.2rem;">🚀 Dm_mkuliku Entreprises</span>
-            <span style="font-size: 1.2rem;">📊 Professional Services</span>
-            <span style="font-size: 1.2rem;">💼 Data • Design • Code</span>
-            <span style="font-size: 1.2rem;">🚀 Dm_mkuliku Entreprises</span>
+            <span style="font-size: 1.05rem;">🚀 Dm_mkuliku Entreprises</span>
+            <span style="font-size: 1.05rem;">📊 Professional Services</span>
+            <span style="font-size: 1.05rem;">💼 Data • Design • Code</span>
+            <span style="font-size: 1.05rem;">🌍 Dar es Salaam, Tanzania</span>
         </div>
     </div>
 
     <!-- HERO SECTION -->
     <section id="home" class="hero">
-        <div class="container">
-            <img src="Mkuliku.jpg" alt="Raymond" class="rounded-circle mb-4 shadow" style="width:120px;height:120px;">
+        <div class="container" data-aos="fade-up" data-aos-duration="900">
+            <img src="Mkuliku.jpg" alt="Raymond" class="rounded-circle mb-4 shadow-lg" style="width:120px;height:120px;object-fit:cover;border:3px solid rgba(255,255,255,0.35);">
             <h1>Raymond Tungaraza</h1>
             <p class="lead">Data Analyst • Graphic Designer • Programmer</p>
             <p style="font-size: 0.95rem; opacity: 0.9;">EASTC Graduate | Dar es Salaam, Tanzania</p>
@@ -345,14 +543,16 @@
     <!-- ABOUT SECTION -->
     <section id="about" class="about-section">
         <div class="container">
-            <h2>About Dm_mkuliku Entreprises</h2>
+            <h2 data-aos="fade-up"><span>About</span> Dm_mkuliku Entreprises</h2>
             <div class="row align-items-center g-4">
-                <div class="col-lg-6">
-                    <img src="https://via.placeholder.com/450x450/0d6efd/ffffff?text=Raymond" alt="Profile" class="img-fluid rounded-4 shadow-lg w-100">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <img src="https://via.placeholder.com/450x450/0d6efd/ffffff?text=Raymond" alt="Profile" class="img-fluid rounded-4 shadow-lg w-100" loading="lazy">
                 </div>
-                <div class="col-lg-6">
-                    <p class="text-muted lh-lg mb-4">Graduate Data Scientist from EASTC Tanzania specializing in statistical analysis (R programming, chi-square tests, contingency tables), professional graphic design, and custom programming solutions for Tanzanian businesses.</p>
-                    
+                <div class="col-lg-6" data-aos="fade-left">
+                    <p class="text-muted lh-lg mb-4">
+                        Graduate Data Scientist from EASTC Tanzania specializing in statistical analysis (R programming, chi-square tests, contingency tables), professional graphic design, and custom programming solutions for Tanzanian businesses.
+                    </p>
+
                     <h5 class="mb-3">Core Skills</h5>
                     <div class="mb-3">
                         <div class="d-flex justify-content-between mb-1"><span>R Programming</span><span>80%</span></div>
@@ -375,59 +575,68 @@
         </div>
     </section>
 
-    <!-- ====== SERVICE SECTION - CUSTOM PURPLE GRADIENT ====== -->
+    <!-- SERVICES -->
     <section id="services" class="service-section">
         <div class="container">
-            <h2>🎯 Our Services</h2>
+            <h2 class="section-title" data-aos="fade-up">🎯 Our Services</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Data, design, and code services crafted for businesses in Tanzania and beyond.
+            </p>
             <div class="row g-4">
-                <!-- Service 1 -->
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
                     <div class="service-card">
                         <div>
                             <i class="bi bi-graph-up"></i>
                             <h4>📊 Data Analysis</h4>
-                            <p>Expert statistical analysis including chi-square tests, contingency tables, regression modeling, and survey data analysis using R programming.</p>
+                            <p>Statistical analysis, chi-square tests, contingency tables, regression modeling, and survey data analysis using R programming.</p>
                         </div>
-                        <button class="btn">Learn More</button>
+                        <button class="btn btn-dark">Learn More</button>
                     </div>
                 </div>
 
-                <!-- Service 2 -->
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="120">
                     <div class="service-card">
                         <div>
                             <i class="bi bi-palette-fill"></i>
                             <h4>🎨 Graphic Design</h4>
-                            <p>Professional graphic design services including logo creation, infographics, branding materials, and social media graphics tailored to your brand.</p>
+                            <p>Logos, infographics, branding materials, and social media graphics tailored to your brand identity.</p>
                         </div>
-                        <button class="btn">Learn More</button>
+                        <button class="btn btn-dark">Learn More</button>
                     </div>
                 </div>
 
-                <!-- Service 3 -->
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="240">
                     <div class="service-card">
                         <div>
                             <i class="bi bi-code-square"></i>
                             <h4>💻 Programming</h4>
-                            <p>Custom R and Python scripts, automation solutions, data processing pipelines, and website development tailored to your business needs.</p>
+                            <p>Custom R and Python scripts, automation solutions, data pipelines, and website development.</p>
                         </div>
-                        <button class="btn">Learn More</button>
+                        <button class="btn btn-dark">Learn More</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ====== PORTFOLIO SECTION - CUSTOM PINK GRADIENT ====== -->
+    <!-- PORTFOLIO -->
     <section id="portfolio" class="portfolio-section">
         <div class="container">
-            <h2>✨ Featured Projects</h2>
+            <h2 class="section-title" data-aos="fade-up">✨ Featured Projects</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Real projects combining data skills, visual design, and automation.
+            </p>
             <div class="row g-4">
                 <!-- Project 1 -->
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up">
                     <div class="portfolio-card">
-                        <img src="https://via.placeholder.com/400x250/0d6efd/ffffff?text=Data+Analysis" alt="Project">
+                        <div class="portfolio-image-wrapper">
+                            <img src="https://via.placeholder.com/400x250/0d6efd/ffffff?text=Data+Analysis" alt="Sex vs Status Analysis">
+                            <div class="portfolio-overlay">
+                                <span>Statistical Analysis • R</span>
+                                <span class="view-link">View project <i class="bi bi-arrow-up-right"></i></span>
+                            </div>
+                        </div>
                         <div class="card-body">
                             <h5>Sex vs Status Analysis</h5>
                             <p>Comprehensive contingency table and chi-square test analysis using R programming language.</p>
@@ -440,9 +649,15 @@
                 </div>
 
                 <!-- Project 2 -->
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="120">
                     <div class="portfolio-card">
-                        <img src="https://via.placeholder.com/400x250/6610f2/ffffff?text=Design" alt="Project">
+                        <div class="portfolio-image-wrapper">
+                            <img src="https://via.placeholder.com/400x250/6610f2/ffffff?text=Design" alt="Food Insecurity Infographic">
+                            <div class="portfolio-overlay">
+                                <span>Infographic • Data Viz</span>
+                                <span class="view-link">View project <i class="bi bi-arrow-up-right"></i></span>
+                            </div>
+                        </div>
                         <div class="card-body">
                             <h5>Food Insecurity Infographic</h5>
                             <p>Professional data visualization design for survey research and statistical findings presentation.</p>
@@ -455,9 +670,15 @@
                 </div>
 
                 <!-- Project 3 -->
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="240">
                     <div class="portfolio-card">
-                        <img src="https://via.placeholder.com/400x250/25D366/ffffff?text=Programming" alt="Project">
+                        <div class="portfolio-image-wrapper">
+                            <img src="https://via.placeholder.com/400x250/25D366/ffffff?text=Programming" alt="R Analysis Pipeline">
+                            <div class="portfolio-overlay">
+                                <span>Automation • Scripts</span>
+                                <span class="view-link">View project <i class="bi bi-arrow-up-right"></i></span>
+                            </div>
+                        </div>
                         <div class="card-body">
                             <h5>R Analysis Pipeline</h5>
                             <p>Automated statistical analysis and reporting script for efficient data processing and insights generation.</p>
@@ -472,15 +693,18 @@
         </div>
     </section>
 
-    <!-- ====== CONTACT SECTION - CUSTOM DARK BLUE GRADIENT ====== -->
+    <!-- CONTACT -->
     <section id="contact" class="contact-section">
         <div class="container">
-            <h2>📞 Get In Touch</h2>
+            <h2 class="section-title" data-aos="fade-up">📞 Get In Touch</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Tell us about your project and we will respond with options.
+            </p>
             <div class="row g-4 justify-content-center">
                 <!-- Email Form -->
-                <div class="col-lg-5">
+                <div class="col-lg-5" data-aos="fade-right">
                     <div class="contact-box">
-                        <h5><i class="bi bi-envelope-fill"></i> Send Email</h5>
+                        <h5><i class="bi bi-envelope-fill me-2"></i> Send Email</h5>
                         <form id="contactForm">
                             <div class="mb-3">
                                 <input type="text" class="form-control" name="from_name" placeholder="Your Full Name" required>
@@ -498,10 +722,10 @@
                 </div>
 
                 <!-- Contact Info -->
-                <div class="col-lg-5">
+                <div class="col-lg-5" data-aos="fade-left">
                     <div class="contact-box">
-                        <h5><i class="bi bi-chat-dots-fill"></i> Quick Contact</h5>
-                        
+                        <h5><i class="bi bi-chat-dots-fill me-2"></i> Quick Contact</h5>
+
                         <div class="contact-info-box">
                             <i class="bi bi-whatsapp"></i>
                             <div style="display: inline-block;">
@@ -560,7 +784,7 @@
                 <div class="footer-section">
                     <h5>📍 Contact Info</h5>
                     <p><i class="bi bi-geo-alt-fill" style="color: #4CAF50;"></i> Changanyikeni, Ubungo<br>Dar es Salaam, Tanzania</p>
-                    <p style="margin-top: 15px;"><i class="bi bi-whatsapp" style="color: var(--whatsapp);"></i> <a href="https://wa.me/255655786630">+255 655 786 630</a></p>
+                    <p style="margin-top: 12px;"><i class="bi bi-whatsapp" style="color: var(--whatsapp);"></i> <a href="https://wa.me/255655786630">+255 655 786 630</a></p>
                     <p><i class="bi bi-envelope" style="color: #ff6b6b;"></i> <a href="mailto:raymondtungaraza20@gmail.com">raymondtungaraza20@gmail.com</a></p>
                 </div>
             </div>
@@ -592,41 +816,60 @@
     </div>
 
     <!-- CHATBOT TOGGLE BUTTON -->
-    <button id="chatbot-toggle">💬</button>
+    <button id="chatbot-toggle" aria-label="Open support chatbot">💬</button>
 
     <!-- WHATSAPP FLOATING BUTTON -->
-    <a href="https://wa.me/255655786630?text=Hello%20from%20Dm_mkuliku%20website!" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+    <a href="https://wa.me/255655786630?text=Hello%20from%20Dm_mkuliku%20website!" class="whatsapp-float pulse-button" target="_blank" title="Chat on WhatsApp">
         <i class="bi bi-whatsapp"></i>
     </a>
 
     <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    
+
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script><!-- [web:11][web:1] -->
+
+    <!-- AOS JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script><!-- [web:31][web:38] -->
+
     <script>
         // Initialize EmailJS
-        emailjs.init("YOUR_PUBLIC_KEY_HERE");
+        emailjs.init("YOUR_PUBLIC_KEY_HERE"); // replace with your real public key [web:1][web:11]
+
+        // Initialize AOS
+        AOS.init({
+            once: true,
+            offset: 80,
+            duration: 700,
+            easing: 'ease-out-quart'
+        }); // [web:31][web:33][web:44]
 
         // Smooth scroll
         $('a[href^="#"]').on('click', function(e) {
-            e.preventDefault();
-            const target = $($.attr(this, 'href'));
-            if (target.length) {
-                $('html, body').animate({ scrollTop: target.offset().top - 70 }, 800);
+            const href = $(this).attr('href');
+            if (href.length > 1) {
+                e.preventDefault();
+                const target = $(href);
+                if (target.length) {
+                    $('html, body').animate({ scrollTop: target.offset().top - 70 }, 700);
+                }
             }
         });
 
-        // Animate skills
+        // Animate skills when in view
         function animateSkills() {
             $('.skill-progress').each(function() {
-                if ($(this).data('width')) {
+                if (!$(this).hasClass('filled') && $(this).data('width')) {
+                    $(this).addClass('filled');
                     $(this).css('width', $(this).data('width'));
                 }
             });
         }
         $(window).on('scroll', function() {
-            if ($('#about').is(':visible') && $(window).scrollTop() > 300) {
+            const aboutOffset = $('#about').offset().top;
+            const scrollPos = $(window).scrollTop() + $(window).height();
+            if (scrollPos > aboutOffset + 100) {
                 animateSkills();
             }
         });
@@ -634,8 +877,8 @@
         // Email form
         document.getElementById('contactForm').addEventListener('submit', function(event) {
             event.preventDefault();
-            const SERVICE_ID = 'YOUR_SERVICE_ID_HERE';
-            const TEMPLATE_ID = 'YOUR_TEMPLATE_ID_HERE';
+            const SERVICE_ID = 'YOUR_SERVICE_ID_HERE';   // replace with your EmailJS service ID [web:11]
+            const TEMPLATE_ID = 'YOUR_TEMPLATE_ID_HERE'; // replace with your EmailJS template ID [web:11]
             const status = document.getElementById('formStatus');
             status.innerHTML = '<div class="alert alert-info">🔄 Sending...</div>';
             emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, this)
@@ -644,6 +887,7 @@
                     document.getElementById('contactForm').reset();
                 })
                 .catch(function(error) {
+                    console.error(error);
                     status.innerHTML = '<div class="alert alert-danger">❌ Send failed. Try WhatsApp instead.</div>';
                 });
         });
@@ -677,7 +921,7 @@
             const msg = message.toLowerCase().trim();
             if (faqResponses[msg]) return faqResponses[msg];
             for (let key in faqResponses) {
-                if (msg.includes(key)) return faqResponses[key];
+                if (key.length > 2 && msg.includes(key)) return faqResponses[key];
             }
             return faqResponses['default'];
         }
@@ -715,6 +959,5 @@
             if (e.key === 'Enter') sendMessage();
         });
     </script>
-
 </body>
 </html>
