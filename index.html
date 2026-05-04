@@ -243,8 +243,8 @@
                     this.reset();
                 })
                 .catch((error) => {
-                    console.error('EmailJS Error:', error);
-                    status.innerHTML = '<div class="alert alert-danger">❌ Failed to send message.<br>Please try WhatsApp for now.</div>';
+                    console.error(error);
+                    status.innerHTML = '<div class="alert alert-danger">❌ Failed to send.<br>Please use WhatsApp for now.</div>';
                 })
                 .finally(() => {
                     submitBtn.innerHTML = 'Send Message';
@@ -252,7 +252,7 @@
                 });
         });
 
-        // Chatbot (unchanged)
+        // Chatbot
         const chatbotToggle = document.getElementById('chatbot-toggle');
         const chatbotContainer = document.getElementById('chatbot-container');
         const closeBtn = document.getElementById('close-chatbot');
