@@ -244,7 +244,7 @@
                 })
                 .catch((error) => {
                     console.error(error);
-                    status.innerHTML = '<div class="alert alert-danger">❌ Failed to send.<br>Please use WhatsApp for now.</div>';
+                    status.innerHTML = '<div class="alert alert-danger">❌ Failed to send message.<br>Please try WhatsApp instead.</div>';
                 })
                 .finally(() => {
                     submitBtn.innerHTML = 'Send Message';
