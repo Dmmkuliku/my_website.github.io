@@ -204,6 +204,31 @@
         AOS.init({ once: true });
         emailjs.init("ouZgiQcXpiQ0t3jST");
 
+        // Contact Form
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submitBtn');
+            const status = document.getElementById('formStatus');
+
+            submitBtn.innerHTML = 'Sending...';
+            submitBtn.disabled = true;
+            status.innerHTML = '';
+
+            emailjs.sendForm('service_94uh9fe', 'template_u4d0rcq', this)
+                .then(() => {
+                    status.innerHTML = '<div class="alert alert-success">✅ Message sent successfully! I will reply soon.</div>';
+                    this.reset();
+                })
+                .catch((error) => {
+                    console.error(error);
+                    status.innerHTML = '<div class="alert alert-danger">❌ Failed to send.<br>Please try WhatsApp instead.</div>';
+                })
+                .finally(() => {
+                    submitBtn.innerHTML = 'Send Message';
+                    submitBtn.disabled = false;
+                });
+        });
+
         // Theme Toggle
         document.getElementById('themeToggle').addEventListener('click', () => {
             document.body.classList.toggle('light');
@@ -226,31 +251,6 @@
         function animate(){ ctx.clearRect(0,0,canvas.width,canvas.height); particles.forEach(p=>{p.update();p.draw();}); requestAnimationFrame(animate); }
         window.addEventListener('resize', ()=>{ resize(); init(); });
         resize(); init(); animate();
-
-        // Contact Form
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const submitBtn = document.getElementById('submitBtn');
-            const status = document.getElementById('formStatus');
-
-            submitBtn.innerHTML = 'Sending...';
-            submitBtn.disabled = true;
-            status.innerHTML = '';
-
-            emailjs.sendForm('service_94uh9fe', 'template_u4d0rcq', this)
-                .then(() => {
-                    status.innerHTML = '<div class="alert alert-success">✅ Message sent successfully! I will reply soon.</div>';
-                    this.reset();
-                })
-                .catch((error) => {
-                    console.error(error);
-                    status.innerHTML = '<div class="alert alert-danger">❌ Failed to send message.<br>Please try WhatsApp instead.</div>';
-                })
-                .finally(() => {
-                    submitBtn.innerHTML = 'Send Message';
-                    submitBtn.disabled = false;
-                });
-        });
 
         // Chatbot
         const chatbotToggle = document.getElementById('chatbot-toggle');
