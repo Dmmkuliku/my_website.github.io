@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mkuliku FinTech | </title>
+    <title>Mkuliku FinTech | Professional Services</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
@@ -20,6 +20,11 @@
         }
         h1, h2 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
         .navbar { background: rgba(5,6,15,0.95); backdrop-filter: blur(20px); }
+        .navbar-brand { color: #fff !important; }
+        .nav-link { color: rgba(255,255,255,0.85) !important; transition: color 0.3s; }
+        .nav-link:hover { color: #6366f1 !important; }
+        .navbar-toggler { border-color: rgba(255,255,255,0.3); }
+        .navbar-toggler-icon { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); }
         .glass-card {
             background: var(--card, rgba(15,23,42,0.85));
             backdrop-filter: blur(20px);
@@ -33,7 +38,7 @@
             width: 75px; height: 75px; background: #25D366; color: white;
             border-radius: 50%; font-size: 2.4rem; display: flex;
             align-items: center; justify-content: center; z-index: 9999;
-            animation: pulse 2s infinite;
+            animation: pulse 2s infinite; text-decoration: none;
         }
         @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.15)} }
         .theme-toggle {
@@ -48,6 +53,11 @@
             display: none; flex-direction: column; z-index: 9998; overflow: hidden;
         }
         .chat-header { background: linear-gradient(135deg, #6366f1, #a855f7); color: white; padding: 18px; }
+        body.light .glass-card { background: #ffffff; border: 1px solid #e2e8f0; }
+        body.light .nav-link { color: #0f172a !important; }
+        body.light .navbar { background: rgba(255,255,255,0.95); }
+        body.light .navbar-brand { color: #0f172a !important; }
+        body.light .navbar-toggler-icon { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); }
     </style>
 </head>
 <body>
@@ -57,14 +67,16 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand fw-bold fs-3" href="#">Mkuliku FinTech</a>
-            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navmenu"><span class="navbar-toggler-icon"></span></button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu" aria-controls="navmenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navmenu">
                 <ul class="navbar-nav ms-auto gap-4">
-                    <li><a class="nav-link" href="#home">Home</a></li>
-                    <li><a class="nav-link" href="#services">Services</a></li>
-                    <li><a class="nav-link" href="#portfolio">Portfolio</a></li>
-                    <li><a class="nav-link" href="#testimonials">Testimonials</a></li>
-                    <li><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -136,7 +148,7 @@
             <h2 class="text-center display-5 mb-5" data-aos="fade-up">Client Testimonials</h2>
             <div class="row g-4">
                 <div class="col-md-4" data-aos="fade-up"><div class="glass-card p-4"><p>"Excellent data analysis and beautiful designs. Highly professional!"</p><strong>— Millicent I., CEO Blessing Hall</strong></div></div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100"><div class="glass-card p-4"><p>"Good design, derivarance, and good customer care."</p><strong>— Yusuph K., Balqees Investment Co Director</strong></div></div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100"><div class="glass-card p-4"><p>"Good design, deliverables, and good customer care."</p><strong>— Yusuph K., Balqees Investment Co Director</strong></div></div>
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="200"><div class="glass-card p-4"><p>"Best analyst in Dar es Salaam. Very reliable and creative."</p><strong>— Aisha S., Entrepreneur</strong></div></div>
             </div>
         </div>
@@ -167,7 +179,7 @@
                         <p>raymondtungaraza20@gmail.com</p>
                         <h4 class="mt-5"><i class="bi bi-geo-alt"></i> Location</h4>
                         <p>Changanyikeni, Ubungo<br>Dar es Salaam, Tanzania</p>
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253682.6221450209!2d39.219281!3d-6.792354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x184b8b6f8f8f8f8f%3A0x8f8f8f8f8f8f8f8f!2sUbungo%2C%20Dar%20es%20Salaam%2C%20Tanzania!5e0!3m2!1sen!2stz!4v1690000000000" 
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253682.6221450209!2d39.219281!3d-6.792354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x185a4f8b6b6b6b6b%3A0x1b1b1b1b1b1b1b1b!2sUbungo%2C%20Dar%20es%20Salaam!5e0!3m2!1sen!2stz!4v1690000000000" 
                                 width="100%" height="260" style="border:0;border-radius:16px;margin-top:15px;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
@@ -201,7 +213,7 @@
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 
     <script>
-        AOS.init({ once: true });
+        AOS.init({ once: true, duration: 800 });
         emailjs.init("ouZgiQcXpiQ0t3jST");
 
         // Theme Toggle
@@ -216,16 +228,49 @@
         const canvas = document.getElementById('particles');
         const ctx = canvas.getContext('2d');
         let particles = [];
+        
         class Particle {
-            constructor(){ this.x = Math.random()*canvas.width; this.y = Math.random()*canvas.height; this.size = Math.random()*3 + 1; this.speedX = Math.random()*0.6 - 0.3; this.speedY = Math.random()*0.6 - 0.3; }
-            update(){ this.x += this.speedX; this.y += this.speedY; if(this.x<0||this.x>canvas.width)this.speedX*=-1; if(this.y<0||this.y>canvas.height)this.speedY*=-1; }
-            draw(){ ctx.fillStyle = '#818cf8'; ctx.beginPath(); ctx.arc(this.x,this.y,this.size,0,Math.PI*2); ctx.fill(); }
+            constructor() { 
+                this.x = Math.random() * canvas.width; 
+                this.y = Math.random() * canvas.height; 
+                this.size = Math.random() * 3 + 1; 
+                this.speedX = Math.random() * 0.6 - 0.3; 
+                this.speedY = Math.random() * 0.6 - 0.3; 
+            }
+            update() { 
+                this.x += this.speedX; 
+                this.y += this.speedY; 
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1; 
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1; 
+            }
+            draw() { 
+                ctx.fillStyle = '#818cf8'; 
+                ctx.beginPath(); 
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); 
+                ctx.fill(); 
+            }
         }
-        function resize(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-        function init(){ particles = []; for(let i=0; i<180; i++) particles.push(new Particle()); }
-        function animate(){ ctx.clearRect(0,0,canvas.width,canvas.height); particles.forEach(p=>{p.update();p.draw();}); requestAnimationFrame(animate); }
-        window.addEventListener('resize', ()=>{ resize(); init(); });
-        resize(); init(); animate();
+        
+        function resize() { 
+            canvas.width = window.innerWidth; 
+            canvas.height = window.innerHeight; 
+        }
+        
+        function init() { 
+            particles = []; 
+            for (let i = 0; i < 180; i++) particles.push(new Particle()); 
+        }
+        
+        function animate() { 
+            ctx.clearRect(0, 0, canvas.width, canvas.height); 
+            particles.forEach(p => { p.update(); p.draw(); }); 
+            requestAnimationFrame(animate); 
+        }
+        
+        window.addEventListener('resize', () => { resize(); init(); });
+        resize(); 
+        init(); 
+        animate();
 
         // Contact Form
         document.getElementById('contactForm').addEventListener('submit', function(e) {
@@ -262,12 +307,13 @@
 
         chatbotToggle.addEventListener('click', () => {
             chatbotContainer.style.display = 'flex';
-            if(messagesDiv.children.length === 0) addBotMessage("Hello! 👋 How can Mkuliku FinTech help you today?");
+            if (messagesDiv.children.length === 0) addBotMessage("Hello! 👋 How can Mkuliku FinTech help you today?");
         });
+        
         closeBtn.addEventListener('click', () => chatbotContainer.style.display = 'none');
 
         const faq = {
-            "hello": "Hello! Welcome to Mkuliku FinTech. How can We assist you?",
+            "hello": "Hello! Welcome to Mkuliku FinTech. How can we assist you?",
             "hi": "Hi there! What would you like to know?",
             "services": "We offer: Software Development, Data Analysis, Data Collection & Visualization, and Graphic Design.",
             "software": "We build custom software, web apps, and business systems tailored to your needs.",
@@ -285,13 +331,15 @@
         };
 
         function addBotMessage(text) {
-            messagesDiv.innerHTML += `<div class="mb-3"><div class="d-inline-block bg-light p-3 rounded-3" style="max-width:85%">${text}</div></div>`;
+            messagesDiv.innerHTML += `<div class="mb-3"><div class="d-inline-block bg-light p-3 rounded-3" style="max-width:85%;color:#000;">${text}</div></div>`;
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
         }
+        
         function addUserMessage(text) {
             messagesDiv.innerHTML += `<div class="text-end mb-3"><div class="d-inline-block bg-primary text-white p-3 rounded-3" style="max-width:85%">${text}</div></div>`;
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
         }
+        
         function getResponse(message) {
             const msg = message.toLowerCase().trim();
             for (let key in faq) {
@@ -299,6 +347,7 @@
             }
             return "Thank you for your question! For faster response, please contact us on WhatsApp (+255 655 786 630).";
         }
+        
         function sendMessage() {
             const text = userInput.value.trim();
             if (!text) return;
@@ -309,6 +358,7 @@
                 addBotMessage(reply);
             }, 700);
         }
+        
         sendBtn.addEventListener('click', sendMessage);
         userInput.addEventListener('keypress', e => {
             if (e.key === 'Enter') sendMessage();
