@@ -18,39 +18,45 @@
             --primary-glow: rgba(79, 70, 229, 0.15);
             --accent: #9333ea; 
             --bg: #090a16; 
-            --text: #f1f5f9; 
+            --text: #f8fafc; 
             --text-muted: #94a3b8;
             --card-bg: rgba(17, 18, 36, 0.75);
-            --card-border: rgba(255, 255, 255, 0.06);
-            --nav-bg: rgba(9, 10, 22, 0.8);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --nav-bg: rgba(9, 10, 22, 0.85);
+            --input-bg: rgba(5, 6, 15, 0.6);
+            --input-text: #f8fafc;
         }
         
         body.light { 
             --bg: #f8fafc; 
             --text: #0f172a; 
-            --text-muted: #64748b;
-            --card-bg: rgba(255, 255, 255, 0.85);
-            --card-border: rgba(0, 0, 0, 0.06);
-            --nav-bg: rgba(248, 250, 252, 0.8);
+            --text-muted: #475569;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --card-border: rgba(15, 23, 42, 0.08);
+            --nav-bg: rgba(248, 250, 252, 0.85);
+            --input-bg: rgba(255, 255, 255, 1);
+            --input-text: #0f172a;
         }
         
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background: var(--bg);
             color: var(--text);
-            transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: background 0.3s ease, color 0.3s ease;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
         
-        h1, h2, h3, h4, .font-heading { 
+        h1, h2, h3, h4, h5, h6, .font-heading { 
             font-family: 'Space Grotesk', sans-serif; 
             font-weight: 700; 
+            color: var(--text);
             letter-spacing: -0.02em;
         }
 
         /* Premium Typography Accents */
         .text-gradient {
-            background: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -61,17 +67,30 @@
             backdrop-filter: blur(20px); 
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--card-border);
-            padding: 18px 0;
+            padding: 16px 0;
             transition: all 0.3s ease;
+        }
+        .navbar-brand {
+            color: var(--text) !important;
         }
         .nav-link {
             color: var(--text-muted) !important;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 0.95rem;
             transition: color 0.2s ease;
         }
         .nav-link:hover, .nav-link.active {
             color: var(--text) !important;
+        }
+
+        /* Responsive Navbar Toggler */
+        .navbar-toggler {
+            padding: 4px 8px;
+            border: 1px solid var(--card-border) !important;
+            background: rgba(255,255,255,0.05);
+        }
+        .navbar-toggler i {
+            color: var(--text);
         }
 
         /* Glassmorphism Structural Cards */
@@ -81,28 +100,29 @@
             -webkit-backdrop-filter: blur(24px);
             border: 1px solid var(--card-border);
             border-radius: 24px;
+            color: var(--text);
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease;
         }
         .glass-card:hover {
             transform: translateY(-6px);
-            border-color: rgba(99, 102, 241, 0.3);
+            border-color: rgba(99, 102, 241, 0.35);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
-        /* Hero Engine */
+        /* Hero Framework Area */
         .hero { 
             min-height: 100vh; 
             position: relative; 
             display: flex;
             align-items: center;
-            padding-top: 100px;
+            padding: 120px 0 60px 0;
         }
         #particles { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
         
         /* Interactive Buttons */
         .btn-premium {
             background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            color: white !important;
+            color: #ffffff !important;
             border: none;
             padding: 14px 32px;
             border-radius: 14px;
@@ -131,23 +151,23 @@
 
         /* Utilities & Badges */
         .tech-badge {
-            background: rgba(99, 102, 241, 0.08);
-            border: 1px solid rgba(99, 102, 241, 0.15);
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
             color: #818cf8;
-            padding: 5px 14px;
+            padding: 6px 16px;
             border-radius: 30px;
             font-size: 0.8rem;
-            font-weight: 600;
+            font-weight: 700;
             display: inline-block;
         }
-        .light .tech-badge {
+        body.light .tech-badge {
             background: rgba(79, 70, 229, 0.06);
             color: var(--primary);
         }
 
-        /* Floating Components & Controls */
+        /* Floating Controls */
         .whatsapp-float {
-            position: fixed; bottom: 30px; right: 30px;
+            position: fixed; bottom: 25px; right: 25px;
             width: 60px; height: 60px; background: #25D366; color: white;
             border-radius: 50%; font-size: 1.8rem; display: flex;
             align-items: center; justify-content: center; z-index: 9999;
@@ -157,62 +177,86 @@
         .whatsapp-float:hover { transform: scale(1.1); color: white; }
 
         .theme-toggle {
-            position: fixed; top: 22px; right: 30px; z-index: 10000;
-            width: 44px; height: 44px; border-radius: 12px; 
+            position: fixed; bottom: 25px; left: 25px; z-index: 10000;
+            width: 50px; height: 50px; border-radius: 14px; 
             background: var(--card-bg); color: var(--text);
             border: 1px solid var(--card-border);
             font-size: 1.2rem; display: flex; align-items: center;
             justify-content: center; cursor: pointer; backdrop-filter: blur(10px);
             transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
         }
-        .theme-toggle:hover { transform: scale(1.05); }
 
-        /* Smooth Floating Chatbot Engine Layout */
+        /* Modern Chatbot Component Box */
         #chatbot-container {
-            position: fixed; bottom: 105px; right: 30px; width: 380px; height: 580px;
+            position: fixed; bottom: 100px; right: 25px; width: 350px; height: 500px;
             background: var(--card-bg); border: 1px solid var(--card-border);
             border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.25);
             display: none; flex-direction: column; z-index: 9998; overflow: hidden;
             backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
         }
-        .chat-header { background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; padding: 20px; }
+        .chat-header { background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; padding: 16px 20px; }
         
+        /* Advanced Form Optimization Matrix */
         .form-control {
-            background: rgba(0, 0, 0, 0.15);
+            background: var(--input-bg);
             border: 1px solid var(--card-border);
-            color: var(--text) !important;
+            color: var(--input-text) !important;
             border-radius: 12px;
             padding: 14px;
             transition: all 0.2s ease;
         }
-        .light .form-control { background: rgba(255, 255, 255, 0.8); }
+        .form-control::placeholder {
+            color: var(--text-muted);
+            opacity: 0.8;
+        }
         .form-control:focus {
-            background: rgba(0, 0, 0, 0.2);
+            background: var(--input-bg);
             border-color: var(--primary);
             box-shadow: 0 0 0 4px var(--primary-glow);
         }
-        .section-padding { padding: 100px 0; }
+        .section-padding { padding: 80px 0; }
+
+        /* Media Queries for Mobile Screens (Android/iOS) */
+        @media (max-width: 768px) {
+            .display-3 { font-size: 2.5rem !important; }
+            .section-padding { padding: 50px 0; }
+            .navbar-collapse {
+                background: var(--card-bg);
+                margin-top: 15px;
+                padding: 20px;
+                border-radius: 18px;
+                border: 1px solid var(--card-border);
+            }
+            #chatbot-container {
+                width: calc(100% - 50px);
+                right: 25px;
+                left: 25px;
+                bottom: 95px;
+            }
+        }
     </style>
 </head>
 <body>
 
+    <!-- Theme Toggle Left Base Pin -->
     <div class="theme-toggle" id="themeToggle"><i class="bi bi-sun-fill"></i></div>
 
     <!-- Navigation Bar Router Cluster -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand fw-bold fs-4 text-white font-heading text-gradient" href="#">Mkuliku FinTech</a>
-            <button class="navbar-toggler border-0 text-white" data-bs-toggle="collapse" data-bs-target="#navmenu">
-                <i class="bi bi-list fs-2"></i>
+            <a class="navbar-brand fw-bold fs-4 font-heading text-gradient" href="#">Mkuliku FinTech</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu" aria-controls="navmenu" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="bi bi-list fs-3"></i>
             </button>
             <div class="collapse navbar-collapse" id="navmenu">
-                <ul class="navbar-nav ms-auto gap-4 align-items-center">
+                <ul class="navbar-nav ms-auto gap-3 align-items-lg-center">
                     <li><a class="nav-link" href="#home">Home</a></li>
                     <li><a class="nav-link" href="#services">Services</a></li>
                     <li><a class="nav-link" href="#portfolio">Portfolio</a></li>
                     <li><a class="nav-link" href="#testimonials">Testimonials</a></li>
                     <li><a class="nav-link" href="#contact">Contact</a></li>
-                    <li><a href="#contact" class="btn btn-premium py-2 px-4 fs-6 rounded-3">Get Started</a></li>
+                    <li class="mt-2 mt-lg-0"><a href="#contact" class="btn btn-premium py-2 px-4 fs-6 rounded-3 d-inline-block">Get Started</a></li>
                 </ul>
             </div>
         </div>
@@ -234,9 +278,7 @@
                 </div>
                 <div class="col-lg-5 text-center" data-aos="fade-left">
                     <div class="position-relative d-inline-block">
-                        <!-- Structural Design Backdrop Circle Grid -->
-                        <div class="position-absolute inset-0 rounded-circle bg-gradient opacity-25 blur-3xl" style="background: linear-gradient(135deg, var(--primary), var(--accent)); width: 100%; height: 100%;"></div>
-                        <img src="Mkuliku.jpg" alt="Raymond Tungaraza Profile Frame Node" class="rounded-circle shadow-lg position-relative" style="width:340px;height:340px;object-fit:cover;border:8px solid var(--card-border); z-index: 2;">
+                        <img src="Mkuliku.jpg" alt="Raymond Tungaraza Profile Frame Node" class="rounded-circle shadow-lg position-relative image-fluid" style="width:280px;height:280px; max-width:100%; object-fit:cover; border:8px solid var(--card-border); z-index: 2;">
                     </div>
                 </div>
             </div>
@@ -246,34 +288,34 @@
     <!-- Modular Services Configuration Array -->
     <section id="services" class="section-padding border-top border-bottom" style="border-color: var(--card-border) !important;">
         <div class="container">
-            <div class="text-center max-w-xl mx-auto mb-5" data-aos="fade-up">
+            <div class="text-center mx-auto mb-5" style="max-width: 600px;" data-aos="fade-up">
                 <span class="tech-badge mb-2">Capabilities Matrix</span>
                 <h2 class="display-5 mb-3">Core Operational Systems</h2>
                 <p class="text-muted">Delivering accurate data-driven analysis architectures built for organizational optimization.</p>
             </div>
             <div class="row g-4">
-                <div class="col-lg-3 col-md-6" data-aos="fade-up">
+                <div class="col-xl-3 col-lg-6 col-md-6" data-aos="fade-up">
                     <div class="glass-card p-4 h-100 d-flex flex-column align-items-start">
                         <div class="p-3 rounded-4 mb-4" style="background: rgba(79,70,229,0.1); color: #818cf8;"><i class="bi bi-code-slash fs-3"></i></div>
                         <h4>Software Development</h4>
                         <p class="text-muted small">Constructing asynchronous backend microservices, specialized system logic, and modern interface frameworks.</p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-xl-3 col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="glass-card p-4 h-100 d-flex flex-column align-items-start">
                         <div class="p-3 rounded-4 mb-4" style="background: rgba(147,51,234,0.1); color: #c084fc;"><i class="bi bi-diagram-3-fill fs-3"></i></div>
                         <h4>Data Engineering</h4>
                         <p class="text-muted small">Structuring end-to-end collection layers, visual data validation hubs, and dynamic report distribution nodes.</p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-xl-3 col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="glass-card p-4 h-100 d-flex flex-column align-items-start">
                         <div class="p-3 rounded-4 mb-4" style="background: rgba(236,72,153,0.1); color: #f472b6;"><i class="bi bi-palette-fill fs-3"></i></div>
                         <h4>Graphic UI Design</h4>
                         <p class="text-muted small">Architecting high-end typography sheets, professional branding assets, and high-impact custom infographics.</p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="col-xl-3 col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="300">
                     <div class="glass-card p-4 h-100 d-flex flex-column align-items-start">
                         <div class="p-3 rounded-4 mb-4" style="background: rgba(16,185,129,0.1); color: #34d399;"><i class="bi bi-graph-up fs-3"></i></div>
                         <h4>Quantitative Analytics</h4>
@@ -287,16 +329,14 @@
     <!-- Modern Work Portfolio Component Grid -->
     <section id="portfolio" class="section-padding">
         <div class="container">
-            <div class="text-center max-w-xl mx-auto mb-5" data-aos="fade-up">
+            <div class="text-center mx-auto mb-5" style="max-width: 600px;" data-aos="fade-up">
                 <span class="tech-badge mb-2">Technical Case Archives</span>
                 <h2 class="display-5 mb-3">Featured Core Projects</h2>
             </div>
             <div class="row g-4">
-                <div class="col-lg-4" data-aos="fade-up">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up">
                     <div class="glass-card overflow-hidden h-100">
-                        <div class="position-relative overflow-hidden group">
-                            <img src="https://picsum.photos/id/1015/800/500" class="w-100 transition duration-500 transform scale-100 hover:scale-105" alt="Statistical Data Analysis Case Study Node" style="height: 230px; object-fit: cover;">
-                        </div>
+                        <img src="https://picsum.photos/id/1015/800/500" class="w-100" alt="Statistical Data Analysis Frame" style="height: 200px; object-fit: cover;">
                         <div class="p-4">
                             <span class="tech-badge mb-2" style="font-size:0.7rem;">R Studio • Inferential Metrics</span>
                             <h5 class="mt-2">Categorical Association Inference Node</h5>
@@ -304,11 +344,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="150">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
                     <div class="glass-card overflow-hidden h-100">
-                        <div class="position-relative overflow-hidden group">
-                            <img src="https://picsum.photos/id/201/800/500" class="w-100" alt="Food Insecurity Applied Statistical Models Infographic Sheet" style="height: 230px; object-fit: cover;">
-                        </div>
+                        <img src="https://picsum.photos/id/201/800/500" class="w-100" alt="Socioeconomic Graphic Presentation" style="height: 200px; object-fit: cover;">
                         <div class="p-4">
                             <span class="tech-badge mb-2" style="font-size:0.7rem;">Data Presentation • Vector Graphics</span>
                             <h5 class="mt-2">Food Insecurity Analytical Infographic</h5>
@@ -316,11 +354,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="col-lg-4 col-md-12" data-aos="fade-up" data-aos-delay="300">
                     <div class="glass-card overflow-hidden h-100">
-                        <div class="position-relative overflow-hidden group">
-                            <img src="https://picsum.photos/id/251/800/500" class="w-100" alt="Automated Data Science Reporting System Pipeline Layout" style="height: 230px; object-fit: cover;">
-                        </div>
+                        <img src="https://picsum.photos/id/251/800/500" class="w-100" alt="Automation Reporting System" style="height: 200px; object-fit: cover;">
                         <div class="p-4">
                             <span class="tech-badge mb-2" style="font-size:0.7rem;">Automated Engineering • R Markdown</span>
                             <h5 class="mt-2">Automated Report Compilation System</h5>
@@ -337,7 +373,7 @@
         <div class="container">
             <h2 class="text-center display-5 mb-5" data-aos="fade-up">Trusted Partner Feedback</h2>
             <div class="row g-4">
-                <div class="col-md-4" data-aos="fade-up">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up">
                     <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between">
                         <p class="text-muted italic">"Exceptional statistical processing pipelines and high-end infographic configurations. Absolute technical efficiency from proposal to execution."</p>
                         <div class="mt-4 border-top pt-3" style="border-color: var(--card-border) !important;">
@@ -346,7 +382,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between">
                         <p class="text-muted">"Excellent design system execution, smooth delivery loops, and dedicated client service metrics throughout our core system architecture deployment."</p>
                         <div class="mt-4 border-top pt-3" style="border-color: var(--card-border) !important;">
@@ -355,7 +391,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-lg-4 col-md-12" data-aos="fade-up" data-aos-delay="200">
                     <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between">
                         <p class="text-muted">"One of the top analytical minds available in Dar es Salaam. Unwavering reliability and deeply inventive data handling capabilities."</p>
                         <div class="mt-4 border-top pt-3" style="border-color: var(--card-border) !important;">
@@ -368,10 +404,10 @@
         </div>
     </section>
 
-    <!-- Enterprise Contact & Communication Portal Section Layout -->
-    <section id="contact" class="section-padding border-top bg-gradient" style="border-color: var(--card-border) !important; background: rgba(0,0,0,0.1)">
+    <!-- Contact Section Layout -->
+    <section id="contact" class="section-padding border-top" style="border-color: var(--card-border) !important;">
         <div class="container">
-            <div class="text-center max-w-xl mx-auto mb-5" data-aos="fade-up">
+            <div class="text-center mx-auto mb-5" style="max-width: 600px;" data-aos="fade-up">
                 <span class="tech-badge mb-2">Communication Node</span>
                 <h2 class="display-5 mb-3">Initiate System Requirements</h2>
             </div>
@@ -380,9 +416,15 @@
                     <div class="glass-card p-4 p-md-5">
                         <h4 class="mb-4">Secure Dispatch Routing</h4>
                         <form id="contactForm">
-                            <div class="mb-4"><input type="text" name="from_name" class="form-control form-control-lg" placeholder="Your Full Name" required></div>
-                            <div class="mb-4"><input type="email" name="from_email" class="form-control form-control-lg" placeholder="Your Institutional Email Address" required></div>
-                            <div class="mb-4"><textarea name="message" class="form-control form-control-lg" rows="5" placeholder="Elaborate project parameters, mathematical boundaries, or software design needs..." required></textarea></div>
+                            <div class="mb-4">
+                                <input type="text" id="user_name" name="user_name" class="form-control form-control-lg" placeholder="Your Full Name" required>
+                            </div>
+                            <div class="mb-4">
+                                <input type="email" id="user_email" name="user_email" class="form-control form-control-lg" placeholder="Your Institutional Email Address" required>
+                            </div>
+                            <div class="mb-4">
+                                <textarea id="project_message" name="project_message" class="form-control form-control-lg" rows="5" placeholder="Elaborate project parameters, mathematical boundaries, or software design needs..." required></textarea>
+                            </div>
                             <button type="submit" class="btn btn-premium w-100 py-3" id="submitBtn">Dispatch System Connection</button>
                             <div id="formStatus" class="mt-3 text-center"></div>
                         </form>
@@ -416,7 +458,7 @@
                         </div>
                         <div class="mt-4 overflow-hidden rounded-4 border" style="border-color: var(--card-border) !important;">
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253682.6221450209!2d39.219281!3d-6.792354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x184b8b6f8f8f8f8f%3A0x8f8f8f8f8f8f8f8f!2sUbungo%2C%20Dar%20es%20Salaam%2C%20Tanzania!5e0!3m2!1sen!2stz!4v1690000000000" 
-                                    width="100%" height="210" style="border:0; filter: grayscale(1) invert(0.9) contrast(1.2);" allowfullscreen="" loading="lazy"></iframe>
+                                    width="100%" height="180" style="border:0; filter: grayscale(1) invert(0.9) contrast(1.2);" allowfullscreen="" loading="lazy"></iframe>
                         </div>
                     </div>
                 </div>
@@ -433,7 +475,7 @@
     <a href="https://wa.me/255655786630" class="whatsapp-float" target="_blank"><i class="bi bi-whatsapp"></i></a>
 
     <!-- Smart Modular Chatbot Architecture Element -->
-    <button id="chatbot-toggle" class="btn btn-premium rounded-circle position-fixed" style="bottom:30px;left:30px;width:60px;height:60px;font-size:1.5rem;z-index:9998; background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);">
+    <button id="chatbot-toggle" class="btn btn-premium rounded-circle position-fixed" style="bottom:25px;right:100px;width:60px;height:60px;font-size:1.5rem;z-index:9998;">
         <i class="bi bi-chat-dots-fill"></i>
     </button>
     
@@ -442,16 +484,16 @@
             <div class="d-flex align-items-center gap-2">
                 <i class="bi bi-robot fs-4"></i>
                 <div>
-                    <h6 class="mb-0 font-heading">Mkuliku Matrix Bot</h6>
-                    <span style="font-size: 0.65rem; opacity: 0.8;">Automated System Assistant</span>
+                    <h6 class="mb-0 font-heading" style="color:#ffffff;">Mkuliku Matrix Bot</h6>
+                    <span style="font-size: 0.65rem; color:#ffffff; opacity: 0.8;">Automated System Assistant</span>
                 </div>
             </div>
-            <button id="close-chatbot" class="btn text-white p-0 fs-5"><i class="bi bi-xl"></i></button>
+            <button id="close-chatbot" class="btn text-white p-0 fs-5">✕</button>
         </div>
-        <div id="chat-messages" class="flex-grow-1 p-3 overflow-auto" style="background: rgba(0,0,0,0.05);"></div>
+        <div id="chat-messages" class="flex-grow-1 p-3 overflow-auto" style="background: rgba(0,0,0,0.02);"></div>
         <div class="p-3 border-top" style="border-color: var(--card-border) !important; background: var(--card-bg);">
             <div class="input-group">
-                <input type="text" id="user-input" class="form-control" placeholder="Query capabilities, analysis metrics, or contacts...">
+                <input type="text" id="user-input" class="form-control form-control-sm" placeholder="Query capabilities or metrics...">
                 <button id="send-btn" class="btn btn-premium px-3"><i class="bi bi-send-fill"></i></button>
             </div>
         </div>
@@ -462,6 +504,8 @@
 
     <script>
         AOS.init({ once: true, duration: 800, easing: 'ease-out-cubic' });
+        
+        // Initialize EmailJS with your verified public key
         emailjs.init("ouZgiQcXpiQ0t3jST");
 
         // Form Transmission Handling Matrix Routing
@@ -474,14 +518,21 @@
             submitBtn.disabled = true;
             status.innerHTML = '';
 
-            emailjs.sendForm('service_94uh9fe', 'template_u4d0rcq', this)
+            // Construct exact programmatic key mappings to send straight to your inbox
+            const templateParams = {
+                user_name: document.getElementById('user_name').value,
+                user_email: document.getElementById('user_email').value,
+                project_message: document.getElementById('project_message').value
+            };
+
+            emailjs.send('service_94uh9fe', 'template_u4d0rcq', templateParams)
                 .then(() => {
-                    status.innerHTML = '<div class="alert alert-success border-0 small bg-success bg-opacity-10 text-success">✅ Package successfully routed to secure queue. Raymond will review immediately.</div>';
-                    this.reset();
+                    status.innerHTML = '<div class="alert alert-success border-0 small text-success bg-success bg-opacity-10">✅ Package successfully routed to your secure inbox!</div>';
+                    document.getElementById('contactForm').reset();
                 })
                 .catch((error) => {
-                    console.error(error);
-                    status.innerHTML = '<div class="alert alert-danger border-0 small bg-danger bg-opacity-10 text-danger">❌ Routing layer fault detected. Please pivot communication to standard WhatsApp.</div>';
+                    console.error('EmailJS Error Status Matrix:', error);
+                    status.innerHTML = '<div class="alert alert-danger border-0 small text-danger bg-danger bg-opacity-10">❌ Processing error. Please pivot communication to standard WhatsApp line.</div>';
                 })
                 .finally(() => {
                     submitBtn.innerHTML = 'Dispatch System Connection';
@@ -489,7 +540,7 @@
                 });
         });
 
-        // Theme Toggle
+        // Theme Toggle Function Matrix
         document.getElementById('themeToggle').addEventListener('click', () => {
             document.body.classList.toggle('light');
             const icon = document.querySelector('#themeToggle i');
@@ -497,7 +548,7 @@
             icon.classList.toggle('bi-moon-fill');
         });
 
-        // Particles Background Rendering Engine Pipeline
+        // Particles Background Engine Pipeline
         const canvas = document.getElementById('particles');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -516,19 +567,19 @@
                 if(this.y<0||this.y>canvas.height)this.speedY*=-1; 
             }
             draw(){ 
-                ctx.fillStyle = document.body.classList.contains('light') ? 'rgba(79, 70, 229, 0.15)' : 'rgba(129, 140, 248, 0.25)'; 
+                ctx.fillStyle = document.body.classList.contains('light') ? 'rgba(79, 70, 229, 0.12)' : 'rgba(129, 140, 248, 0.2)'; 
                 ctx.beginPath(); 
                 ctx.arc(this.x,this.y,this.size,0,Math.PI*2); 
                 ctx.fill(); 
             }
         }
         function resize(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-        function init(){ particles = []; for(let i=0; i<100; i++) particles.push(new Particle()); }
+        function init(){ particles = []; for(let i=0; i<80; i++) particles.push(new Particle()); }
         function animate(){ ctx.clearRect(0,0,canvas.width,canvas.height); particles.forEach(p=>{p.update();p.draw();}); requestAnimationFrame(animate); }
         window.addEventListener('resize', ()=>{ resize(); init(); });
         resize(); init(); animate();
 
-        // Chatbot Framework Rules Loop Engine Mapping
+        // Chatbot Integration Engine
         const chatbotToggle = document.getElementById('chatbot-toggle');
         const chatbotContainer = document.getElementById('chatbot-container');
         const closeBtn = document.getElementById('close-chatbot');
@@ -538,7 +589,7 @@
 
         chatbotToggle.addEventListener('click', () => {
             chatbotContainer.style.display = 'flex';
-            if(messagesDiv.children.length === 0) addBotMessage("Connection verified. 🤖 I am the Mkuliku system assistant. Inquire regarding our operations matrix below.");
+            if(messagesDiv.children.length === 0) addBotMessage("Connection verified. 🤖 How can Mkuliku FinTech assist your system requirements today?");
         });
         closeBtn.addEventListener('click', () => chatbotContainer.style.display = 'none');
 
@@ -561,11 +612,11 @@
         };
 
         function addBotMessage(text) {
-            messagesDiv.innerHTML += `<div class="mb-3"><div class="d-inline-block p-3 rounded-4 shadow-sm text-sm" style="max-width:85%; background: var(--card-bg); border: 1px solid var(--card-border); color: var(--text); font-size:0.9rem;">${text}</div></div>`;
+            messagesDiv.innerHTML += `<div class="mb-3 text-start"><div class="d-inline-block p-3 rounded-4 shadow-sm text-sm" style="max-width:85%; background: var(--card-bg); border: 1px solid var(--card-border); color: var(--text); font-size:0.85rem;">${text}</div></div>`;
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
         }
         function addUserMessage(text) {
-            messagesDiv.innerHTML += `<div class="text-end mb-3"><div class="d-inline-block text-white p-3 rounded-4 shadow-sm text-sm" style="max-width:85%; background: linear-gradient(135deg, var(--primary), var(--accent)); font-size:0.9rem; font-weight:500;">${text}</div></div>`;
+            messagesDiv.innerHTML += `<div class="text-end mb-3"><div class="d-inline-block text-white p-3 rounded-4 shadow-sm text-sm" style="max-width:85%; background: linear-gradient(135deg, var(--primary), var(--accent)); font-size:0.85rem; font-weight:500;">${text}</div></div>`;
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
         }
         function getResponse(message) {
@@ -573,7 +624,7 @@
             for (let key in faq) {
                 if (msg.includes(key)) return faq[key];
             }
-            return "Query context outside standard index boundaries. For explicit configuration advice, please ping Raymond on WhatsApp directly (+255 655 786 630).";
+            return "Query context outside standard index parameters. For explicit layout or calculation advice, please track with Raymond on WhatsApp (+255 655 786 630).";
         }
         function sendMessage() {
             const text = userInput.value.trim();
@@ -583,7 +634,7 @@
             setTimeout(() => {
                 const reply = getResponse(text);
                 addBotMessage(reply);
-            }, 500);
+            }, 400);
         }
         sendBtn.addEventListener('click', sendMessage);
         userInput.addEventListener('keypress', e => { if (e.key === 'Enter') sendMessage(); });
