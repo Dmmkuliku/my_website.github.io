@@ -13,50 +13,73 @@
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
  
     <style>
+        /* --- GLOBAL HIGH-CONTRAST SYSTEM --- */
         :root { 
-            --primary: #4f46e5; 
-            --primary-glow: rgba(79, 70, 229, 0.15);
-            --accent: #9333ea; 
-            --bg: #090a16; 
-            --text: #f8fafc; 
-            --text-muted: #94a3b8;
-            --card-bg: rgba(17, 18, 36, 0.75);
-            --card-border: rgba(255, 255, 255, 0.08);
-            --nav-bg: rgba(9, 10, 22, 0.85);
-            --input-bg: rgba(5, 6, 15, 0.6);
-            --input-text: #f8fafc;
+            --primary: #6366f1; 
+            --primary-glow: rgba(99, 102, 241, 0.25);
+            --accent: #a855f7; 
+            --bg: #0b0c16; 
+            
+            /* High-Contrast Dark Mode Text */
+            --text: #ffffff; 
+            --text-muted: #cbd5e1;
+            
+            --card-bg: rgba(20, 22, 43, 0.85);
+            --card-border: rgba(255, 255, 255, 0.12);
+            --nav-bg: rgba(11, 12, 22, 0.95);
+            --input-bg: #161930;
+            --input-text: #ffffff;
+            --input-placeholder: #94a3b8;
         }
         
         body.light { 
             --bg: #f8fafc; 
+            
+            /* High-Contrast Light Mode Text */
             --text: #0f172a; 
             --text-muted: #475569;
-            --card-bg: rgba(255, 255, 255, 0.9);
-            --card-border: rgba(15, 23, 42, 0.08);
-            --nav-bg: rgba(248, 250, 252, 0.85);
-            --input-bg: rgba(255, 255, 255, 1);
+            
+            --card-bg: #ffffff;
+            --card-border: rgba(15, 23, 42, 0.12);
+            --nav-bg: rgba(248, 250, 252, 0.95);
+            --input-bg: #ffffff;
             --input-text: #0f172a;
+            --input-placeholder: #64748b;
         }
         
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background: var(--bg);
-            color: var(--text);
+            color: var(--text) !important; /* Enforce global text color */
             transition: background 0.3s ease, color 0.3s ease;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
         
+        /* Enforce header color override */
         h1, h2, h3, h4, h5, h6, .font-heading { 
             font-family: 'Space Grotesk', sans-serif; 
             font-weight: 700; 
-            color: var(--text);
+            color: var(--text) !important;
             letter-spacing: -0.02em;
+        }
+
+        /* Enforce high readability on paragraphs, spans, labels, and lists */
+        p, span, label, li {
+            color: var(--text) !important;
+        }
+
+        /* Ensure text-muted is legible in Dark Mode */
+        .text-muted {
+            color: var(--text-muted) !important;
+        }
+        .small {
+            color: var(--text-muted) !important;
         }
 
         /* Premium Typography Accents */
         .text-gradient {
-            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            background: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -83,14 +106,17 @@
             color: var(--text) !important;
         }
 
-        /* Responsive Navbar Toggler */
+        /* Mobile Responsive Toggler Custom Brackets */
         .navbar-toggler {
-            padding: 4px 8px;
+            padding: 6px 10px;
             border: 1px solid var(--card-border) !important;
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        body.light .navbar-toggler {
+            background: rgba(0, 0, 0, 0.04);
         }
         .navbar-toggler i {
-            color: var(--text);
+            color: var(--text) !important;
         }
 
         /* Glassmorphism Structural Cards */
@@ -100,13 +126,15 @@
             -webkit-backdrop-filter: blur(24px);
             border: 1px solid var(--card-border);
             border-radius: 24px;
-            color: var(--text);
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease;
         }
         .glass-card:hover {
             transform: translateY(-6px);
-            border-color: rgba(99, 102, 241, 0.35);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        body.light .glass-card:hover {
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
         }
 
         /* Hero Framework Area */
@@ -121,7 +149,7 @@
         
         /* Interactive Buttons */
         .btn-premium {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            background: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%);
             color: #ffffff !important;
             border: none;
             padding: 14px 32px;
@@ -132,11 +160,11 @@
         }
         .btn-premium:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.35);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.45);
         }
         .btn-outline-custom {
             border: 1px solid var(--card-border);
-            color: var(--text);
+            color: var(--text) !important;
             padding: 14px 32px;
             border-radius: 14px;
             font-weight: 600;
@@ -145,15 +173,15 @@
         }
         .btn-outline-custom:hover {
             background: var(--text);
-            color: var(--bg);
+            color: var(--bg) !important;
             transform: translateY(-2px);
         }
 
-        /* Utilities & Badges */
+        /* High-Contrast Badges */
         .tech-badge {
-            background: rgba(99, 102, 241, 0.1);
-            border: 1px solid rgba(99, 102, 241, 0.2);
-            color: #818cf8;
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.4);
+            color: #a5b4fc !important;
             padding: 6px 16px;
             border-radius: 30px;
             font-size: 0.8rem;
@@ -161,20 +189,21 @@
             display: inline-block;
         }
         body.light .tech-badge {
-            background: rgba(79, 70, 229, 0.06);
-            color: var(--primary);
+            background: rgba(79, 70, 229, 0.08);
+            border: 1px solid rgba(79, 70, 229, 0.2);
+            color: #4f46e5 !important;
         }
 
-        /* Floating Controls */
+        /* Floating Layout Anchors */
         .whatsapp-float {
             position: fixed; bottom: 25px; right: 25px;
-            width: 60px; height: 60px; background: #25D366; color: white;
+            width: 60px; height: 60px; background: #25D366; color: white !important;
             border-radius: 50%; font-size: 1.8rem; display: flex;
             align-items: center; justify-content: center; z-index: 9999;
             box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
             transition: transform 0.3s ease;
         }
-        .whatsapp-float:hover { transform: scale(1.1); color: white; }
+        .whatsapp-float:hover { transform: scale(1.1); color: white !important; }
 
         .theme-toggle {
             position: fixed; bottom: 25px; left: 25px; z-index: 10000;
@@ -184,40 +213,40 @@
             font-size: 1.2rem; display: flex; align-items: center;
             justify-content: center; cursor: pointer; backdrop-filter: blur(10px);
             transition: all 0.2s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        /* Modern Chatbot Component Box */
+        /* Conversational Interface Component Box */
         #chatbot-container {
             position: fixed; bottom: 100px; right: 25px; width: 350px; height: 500px;
             background: var(--card-bg); border: 1px solid var(--card-border);
-            border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+            border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.4);
             display: none; flex-direction: column; z-index: 9998; overflow: hidden;
             backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
         }
-        .chat-header { background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; padding: 16px 20px; }
+        .chat-header { background: linear-gradient(135deg, #4f46e5, #9333ea); color: white; padding: 16px 20px; }
         
-        /* Advanced Form Optimization Matrix */
+        /* High-Contrast Form Integration Matrix */
         .form-control {
             background: var(--input-bg);
-            border: 1px solid var(--card-border);
+            border: 1px solid var(--card-border) !important;
             color: var(--input-text) !important;
             border-radius: 12px;
             padding: 14px;
             transition: all 0.2s ease;
         }
         .form-control::placeholder {
-            color: var(--text-muted);
-            opacity: 0.8;
+            color: var(--input-placeholder) !important;
+            opacity: 1; /* Force browser to display full brightness */
         }
         .form-control:focus {
             background: var(--input-bg);
-            border-color: var(--primary);
+            border-color: #6366f1;
             box-shadow: 0 0 0 4px var(--primary-glow);
         }
         .section-padding { padding: 80px 0; }
 
-        /* Media Queries for Mobile Screens (Android/iOS) */
+        /* Mobile Cross-Device Responsiveness (Android/iOS) */
         @media (max-width: 768px) {
             .display-3 { font-size: 2.5rem !important; }
             .section-padding { padding: 50px 0; }
@@ -239,7 +268,7 @@
 </head>
 <body>
 
-    <!-- Theme Toggle Left Base Pin -->
+    <!-- Theme Control System Toggle Flag Base Anchor -->
     <div class="theme-toggle" id="themeToggle"><i class="bi bi-sun-fill"></i></div>
 
     <!-- Navigation Bar Router Cluster -->
@@ -262,7 +291,7 @@
         </div>
     </nav>
 
-    <!-- Hero Framework Area -->
+    <!-- Main Structural Hero Area Matrix Frame -->
     <section id="home" class="hero">
         <canvas id="particles"></canvas>
         <div class="container position-relative" style="z-index:2">
@@ -285,7 +314,7 @@
         </div>
     </section>
 
-    <!-- Modular Services Configuration Array -->
+    <!-- Modular Capabilities Area Structure -->
     <section id="services" class="section-padding border-top border-bottom" style="border-color: var(--card-border) !important;">
         <div class="container">
             <div class="text-center mx-auto mb-5" style="max-width: 600px;" data-aos="fade-up">
@@ -296,28 +325,28 @@
             <div class="row g-4">
                 <div class="col-xl-3 col-lg-6 col-md-6" data-aos="fade-up">
                     <div class="glass-card p-4 h-100 d-flex flex-column align-items-start">
-                        <div class="p-3 rounded-4 mb-4" style="background: rgba(79,70,229,0.1); color: #818cf8;"><i class="bi bi-code-slash fs-3"></i></div>
+                        <div class="p-3 rounded-4 mb-4" style="background: rgba(99,102,241,0.15); color: #a5b4fc;"><i class="bi bi-code-slash fs-3"></i></div>
                         <h4>Software Development</h4>
                         <p class="text-muted small">Constructing asynchronous backend microservices, specialized system logic, and modern interface frameworks.</p>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="glass-card p-4 h-100 d-flex flex-column align-items-start">
-                        <div class="p-3 rounded-4 mb-4" style="background: rgba(147,51,234,0.1); color: #c084fc;"><i class="bi bi-diagram-3-fill fs-3"></i></div>
+                        <div class="p-3 rounded-4 mb-4" style="background: rgba(147,51,234,0.15); color: #d8b4fe;"><i class="bi bi-diagram-3-fill fs-3"></i></div>
                         <h4>Data Engineering</h4>
                         <p class="text-muted small">Structuring end-to-end collection layers, visual data validation hubs, and dynamic report distribution nodes.</p>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="glass-card p-4 h-100 d-flex flex-column align-items-start">
-                        <div class="p-3 rounded-4 mb-4" style="background: rgba(236,72,153,0.1); color: #f472b6;"><i class="bi bi-palette-fill fs-3"></i></div>
+                        <div class="p-3 rounded-4 mb-4" style="background: rgba(236,72,153,0.15); color: #fbcfe8;"><i class="bi bi-palette-fill fs-3"></i></div>
                         <h4>Graphic UI Design</h4>
                         <p class="text-muted small">Architecting high-end typography sheets, professional branding assets, and high-impact custom infographics.</p>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="300">
                     <div class="glass-card p-4 h-100 d-flex flex-column align-items-start">
-                        <div class="p-3 rounded-4 mb-4" style="background: rgba(16,185,129,0.1); color: #34d399;"><i class="bi bi-graph-up fs-3"></i></div>
+                        <div class="p-3 rounded-4 mb-4" style="background: rgba(16,185,129,0.15); color: #6ee7b7;"><i class="bi bi-graph-up fs-3"></i></div>
                         <h4>Quantitative Analytics</h4>
                         <p class="text-muted small">Deploying advanced mathematical evaluations, variance calculations, and precise statistical modeling models.</p>
                     </div>
@@ -326,7 +355,7 @@
         </div>
     </section>
 
-    <!-- Modern Work Portfolio Component Grid -->
+    <!-- Modern Work Portfolio Component Grid Layout -->
     <section id="portfolio" class="section-padding">
         <div class="container">
             <div class="text-center mx-auto mb-5" style="max-width: 600px;" data-aos="fade-up">
@@ -356,7 +385,7 @@
                 </div>
                 <div class="col-lg-4 col-md-12" data-aos="fade-up" data-aos-delay="300">
                     <div class="glass-card overflow-hidden h-100">
-                        <img src="https://picsum.photos/id/251/800/500" class="w-100" alt="Automation Reporting System" style="height: 200px; object-fit: cover;">
+                        <img src="https://picsum.photos/id/251/800/500" class="w-100" alt="Automation Reporting System Layout" style="height: 200px; object-fit: cover;">
                         <div class="p-4">
                             <span class="tech-badge mb-2" style="font-size:0.7rem;">Automated Engineering • R Markdown</span>
                             <h5 class="mt-2">Automated Report Compilation System</h5>
@@ -368,7 +397,7 @@
         </div>
     </section>
 
-    <!-- Client Testimonial Carousels Grid -->
+    <!-- Client Testimonial Array Modules -->
     <section id="testimonials" class="section-padding border-top" style="border-color: var(--card-border) !important;">
         <div class="container">
             <h2 class="text-center display-5 mb-5" data-aos="fade-up">Trusted Partner Feedback</h2>
@@ -404,7 +433,7 @@
         </div>
     </section>
 
-    <!-- Contact Section Layout -->
+    <!-- Communication Pipeline Form Contact Layout Gateway -->
     <section id="contact" class="section-padding border-top" style="border-color: var(--card-border) !important;">
         <div class="container">
             <div class="text-center mx-auto mb-5" style="max-width: 600px;" data-aos="fade-up">
@@ -416,6 +445,7 @@
                     <div class="glass-card p-4 p-md-5">
                         <h4 class="mb-4">Secure Dispatch Routing</h4>
                         <form id="contactForm">
+                            <!-- Correct standard name attributes used programmatically -->
                             <div class="mb-4">
                                 <input type="text" id="user_name" name="user_name" class="form-control form-control-lg" placeholder="Your Full Name" required>
                             </div>
@@ -434,7 +464,7 @@
                     <div class="glass-card p-4 p-md-5 h-100 d-flex flex-column justify-content-between">
                         <div>
                             <div class="d-flex align-items-start gap-3 mb-4">
-                                <div class="p-3 rounded-3 bg-success bg-opacity-10 text-success"><i class="bi bi-whatsapp fs-4"></i></div>
+                                <div class="p-3 rounded-3 bg-success bg-opacity-15 text-success"><i class="bi bi-whatsapp fs-4"></i></div>
                                 <div>
                                     <h5 class="mb-1">Direct Secure WhatsApp Line</h5>
                                     <p class="fs-6 mb-2 text-muted">+255 655 786 630</p>
@@ -442,14 +472,14 @@
                                 </div>
                             </div>
                             <div class="d-flex align-items-start gap-3 mb-4">
-                                <div class="p-3 rounded-3 bg-primary bg-opacity-10 text-primary"><i class="bi bi-envelope fs-4"></i></div>
+                                <div class="p-3 rounded-3 bg-primary bg-opacity-15 text-primary"><i class="bi bi-envelope fs-4"></i></div>
                                 <div>
                                     <h5>Email Network Address</h5>
                                     <p class="text-muted">raymondtungaraza20@gmail.com</p>
                                 </div>
                             </div>
                             <div class="d-flex align-items-start gap-3 mb-2">
-                                <div class="p-3 rounded-3 bg-warning bg-opacity-10 text-warning"><i class="bi bi-geo-alt fs-4"></i></div>
+                                <div class="p-3 rounded-3 bg-warning bg-opacity-15 text-warning"><i class="bi bi-geo-alt fs-4"></i></div>
                                 <div>
                                     <h5>Operations Headquarters Location</h5>
                                     <p class="text-muted mb-0">Changanyikeni, Ubungo | Dar es Salaam, Tanzania</p>
@@ -457,6 +487,7 @@
                             </div>
                         </div>
                         <div class="mt-4 overflow-hidden rounded-4 border" style="border-color: var(--card-border) !important;">
+                            <!-- Google Maps iFrame Map Configuration Component -->
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253682.6221450209!2d39.219281!3d-6.792354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x184b8b6f8f8f8f8f%3A0x8f8f8f8f8f8f8f8f!2sUbungo%2C%20Dar%20es%20Salaam%2C%20Tanzania!5e0!3m2!1sen!2stz!4v1690000000000" 
                                     width="100%" height="180" style="border:0; filter: grayscale(1) invert(0.9) contrast(1.2);" allowfullscreen="" loading="lazy"></iframe>
                         </div>
@@ -466,12 +497,12 @@
         </div>
     </section>
 
-    <!-- Operational Platform Footer -->
+    <!-- Operational Platform Footer Ecosystem -->
     <footer class="py-4 text-center border-top" style="border-color: var(--card-border) !important;">
         <p class="text-muted small mb-0">Mkuliku FinTech © 2026 | Technical Operations Infrastructure Hub | Dar es Salaam, Tanzania</p>
     </footer>
 
-    <!-- Instant Interaction Gateways -->
+    <!-- Instant Interaction Anchor Gateways -->
     <a href="https://wa.me/255655786630" class="whatsapp-float" target="_blank"><i class="bi bi-whatsapp"></i></a>
 
     <!-- Smart Modular Chatbot Architecture Element -->
@@ -484,8 +515,8 @@
             <div class="d-flex align-items-center gap-2">
                 <i class="bi bi-robot fs-4"></i>
                 <div>
-                    <h6 class="mb-0 font-heading" style="color:#ffffff;">Mkuliku Matrix Bot</h6>
-                    <span style="font-size: 0.65rem; color:#ffffff; opacity: 0.8;">Automated System Assistant</span>
+                    <h6 class="mb-0 font-heading" style="color:#ffffff !important;">Mkuliku Matrix Bot</h6>
+                    <span style="font-size: 0.65rem; color:#ffffff !important; opacity: 0.8;">Automated System Assistant</span>
                 </div>
             </div>
             <button id="close-chatbot" class="btn text-white p-0 fs-5">✕</button>
@@ -518,7 +549,7 @@
             submitBtn.disabled = true;
             status.innerHTML = '';
 
-            // Construct exact programmatic key mappings to send straight to your inbox
+            // Construct exact key mappings to send straight to your inbox template
             const templateParams = {
                 user_name: document.getElementById('user_name').value,
                 user_email: document.getElementById('user_email').value,
@@ -531,7 +562,7 @@
                     document.getElementById('contactForm').reset();
                 })
                 .catch((error) => {
-                    console.error('EmailJS Error Status Matrix:', error);
+                    console.error('EmailJS System Exception Routing Failure State Matrix:', error);
                     status.innerHTML = '<div class="alert alert-danger border-0 small text-danger bg-danger bg-opacity-10">❌ Processing error. Please pivot communication to standard WhatsApp line.</div>';
                 })
                 .finally(() => {
@@ -540,7 +571,7 @@
                 });
         });
 
-        // Theme Toggle Function Matrix
+        // Theme Toggle Routine Loop
         document.getElementById('themeToggle').addEventListener('click', () => {
             document.body.classList.toggle('light');
             const icon = document.querySelector('#themeToggle i');
@@ -548,7 +579,7 @@
             icon.classList.toggle('bi-moon-fill');
         });
 
-        // Particles Background Engine Pipeline
+        // Particles System Background Engine Node
         const canvas = document.getElementById('particles');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -567,7 +598,7 @@
                 if(this.y<0||this.y>canvas.height)this.speedY*=-1; 
             }
             draw(){ 
-                ctx.fillStyle = document.body.classList.contains('light') ? 'rgba(79, 70, 229, 0.12)' : 'rgba(129, 140, 248, 0.2)'; 
+                ctx.fillStyle = document.body.classList.contains('light') ? 'rgba(79, 70, 229, 0.15)' : 'rgba(255, 255, 255, 0.25)'; 
                 ctx.beginPath(); 
                 ctx.arc(this.x,this.y,this.size,0,Math.PI*2); 
                 ctx.fill(); 
@@ -579,7 +610,7 @@
         window.addEventListener('resize', ()=>{ resize(); init(); });
         resize(); init(); animate();
 
-        // Chatbot Integration Engine
+        // Chatbot Interface Routine Conversational Matrix
         const chatbotToggle = document.getElementById('chatbot-toggle');
         const chatbotContainer = document.getElementById('chatbot-container');
         const closeBtn = document.getElementById('close-chatbot');
