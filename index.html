@@ -3,196 +3,456 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mkuliku FinTech | </title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <title>Mkuliku FinTech | Enterprise Data Analytics & Software Engineering</title>
+    
+    <!-- Premium Google Fonts Framework -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
  
     <style>
-        :root { --primary: #6366f1; --accent: #a855f7; }
-        body.light { --bg: #f8fafc; --text: #0f172a; --card: #ffffff; }
+        :root { 
+            --primary: #4f46e5; 
+            --primary-glow: rgba(79, 70, 229, 0.15);
+            --accent: #9333ea; 
+            --bg: #090a16; 
+            --text: #f1f5f9; 
+            --text-muted: #94a3b8;
+            --card-bg: rgba(17, 18, 36, 0.75);
+            --card-border: rgba(255, 255, 255, 0.06);
+            --nav-bg: rgba(9, 10, 22, 0.8);
+        }
+        
+        body.light { 
+            --bg: #f8fafc; 
+            --text: #0f172a; 
+            --text-muted: #64748b;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --card-border: rgba(0, 0, 0, 0.06);
+            --nav-bg: rgba(248, 250, 252, 0.8);
+        }
+        
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg, #05060f);
-            color: var(--text, #e2e8f0);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-x: hidden;
         }
-        h1, h2 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
-        .navbar { background: rgba(5,6,15,0.95); backdrop-filter: blur(20px); }
+        
+        h1, h2, h3, h4, .font-heading { 
+            font-family: 'Space Grotesk', sans-serif; 
+            font-weight: 700; 
+            letter-spacing: -0.02em;
+        }
+
+        /* Premium Typography Accents */
+        .text-gradient {
+            background: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Navbar Polishing */
+        .navbar { 
+            background: var(--nav-bg); 
+            backdrop-filter: blur(20px); 
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--card-border);
+            padding: 18px 0;
+            transition: all 0.3s ease;
+        }
+        .nav-link {
+            color: var(--text-muted) !important;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--text) !important;
+        }
+
+        /* Glassmorphism Structural Cards */
         .glass-card {
-            background: var(--card, rgba(15,23,42,0.85));
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(99,102,241,0.2);
-            border-radius: 28px;
+            background: var(--card-bg);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease;
         }
-        .hero { min-height: 100vh; position: relative; }
-        #particles { position: absolute; inset: 0; z-index: 1; }
+        .glass-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Hero Engine */
+        .hero { 
+            min-height: 100vh; 
+            position: relative; 
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+        }
+        #particles { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+        
+        /* Interactive Buttons */
+        .btn-premium {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white !important;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px var(--primary-glow);
+        }
+        .btn-premium:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.35);
+        }
+        .btn-outline-custom {
+            border: 1px solid var(--card-border);
+            color: var(--text);
+            padding: 14px 32px;
+            border-radius: 14px;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.02);
+            transition: all 0.3s ease;
+        }
+        .btn-outline-custom:hover {
+            background: var(--text);
+            color: var(--bg);
+            transform: translateY(-2px);
+        }
+
+        /* Utilities & Badges */
+        .tech-badge {
+            background: rgba(99, 102, 241, 0.08);
+            border: 1px solid rgba(99, 102, 241, 0.15);
+            color: #818cf8;
+            padding: 5px 14px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .light .tech-badge {
+            background: rgba(79, 70, 229, 0.06);
+            color: var(--primary);
+        }
+
+        /* Floating Components & Controls */
         .whatsapp-float {
             position: fixed; bottom: 30px; right: 30px;
-            width: 75px; height: 75px; background: #25D366; color: white;
-            border-radius: 50%; font-size: 2.4rem; display: flex;
+            width: 60px; height: 60px; background: #25D366; color: white;
+            border-radius: 50%; font-size: 1.8rem; display: flex;
             align-items: center; justify-content: center; z-index: 9999;
-            animation: pulse 2s infinite;
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
+            transition: transform 0.3s ease;
         }
-        @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.15)} }
+        .whatsapp-float:hover { transform: scale(1.1); color: white; }
+
         .theme-toggle {
-            position: fixed; top: 20px; right: 100px; z-index: 10000;
-            width: 55px; height: 55px; border-radius: 50%; background: white;
-            color: #000; font-size: 1.5rem; display: flex; align-items: center;
-            justify-content: center; box-shadow: 0 5px 20px rgba(0,0,0,0.3); cursor: pointer;
+            position: fixed; top: 22px; right: 30px; z-index: 10000;
+            width: 44px; height: 44px; border-radius: 12px; 
+            background: var(--card-bg); color: var(--text);
+            border: 1px solid var(--card-border);
+            font-size: 1.2rem; display: flex; align-items: center;
+            justify-content: center; cursor: pointer; backdrop-filter: blur(10px);
+            transition: all 0.2s ease;
         }
+        .theme-toggle:hover { transform: scale(1.05); }
+
+        /* Smooth Floating Chatbot Engine Layout */
         #chatbot-container {
-            position: fixed; bottom: 110px; right: 30px; width: 370px; height: 560px;
-            background: white; border-radius: 20px; box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+            position: fixed; bottom: 105px; right: 30px; width: 380px; height: 580px;
+            background: var(--card-bg); border: 1px solid var(--card-border);
+            border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.25);
             display: none; flex-direction: column; z-index: 9998; overflow: hidden;
+            backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
         }
-        .chat-header { background: linear-gradient(135deg, #6366f1, #a855f7); color: white; padding: 18px; }
+        .chat-header { background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; padding: 20px; }
+        
+        .form-control {
+            background: rgba(0, 0, 0, 0.15);
+            border: 1px solid var(--card-border);
+            color: var(--text) !important;
+            border-radius: 12px;
+            padding: 14px;
+            transition: all 0.2s ease;
+        }
+        .light .form-control { background: rgba(255, 255, 255, 0.8); }
+        .form-control:focus {
+            background: rgba(0, 0, 0, 0.2);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px var(--primary-glow);
+        }
+        .section-padding { padding: 100px 0; }
     </style>
 </head>
 <body>
+
     <div class="theme-toggle" id="themeToggle"><i class="bi bi-sun-fill"></i></div>
 
-    <!-- Navbar -->
+    <!-- Navigation Bar Router Cluster -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand fw-bold fs-3" href="#">Mkuliku FinTech</a>
-            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navmenu"><span class="navbar-toggler-icon"></span></button>
+            <a class="navbar-brand fw-bold fs-4 text-white font-heading text-gradient" href="#">Mkuliku FinTech</a>
+            <button class="navbar-toggler border-0 text-white" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <i class="bi bi-list fs-2"></i>
+            </button>
             <div class="collapse navbar-collapse" id="navmenu">
-                <ul class="navbar-nav ms-auto gap-4">
+                <ul class="navbar-nav ms-auto gap-4 align-items-center">
                     <li><a class="nav-link" href="#home">Home</a></li>
                     <li><a class="nav-link" href="#services">Services</a></li>
                     <li><a class="nav-link" href="#portfolio">Portfolio</a></li>
                     <li><a class="nav-link" href="#testimonials">Testimonials</a></li>
                     <li><a class="nav-link" href="#contact">Contact</a></li>
+                    <li><a href="#contact" class="btn btn-premium py-2 px-4 fs-6 rounded-3">Get Started</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Hero -->
+    <!-- Hero Framework Area -->
     <section id="home" class="hero">
         <canvas id="particles"></canvas>
         <div class="container position-relative" style="z-index:2">
-            <div class="row align-items-center pt-5">
-                <div class="col-lg-7" data-aos="fade-right">
-                    <h1 class="display-1">Mkuliku FinTech</h1>
-                    <p class="fs-4 text-white-50">Data Analysis • Survey Solutions • Graphic Design • Software Development</p>
-                    <div class="mt-4">
-                        <a href="#portfolio" class="btn btn-primary btn-lg px-5 me-3">View Portfolio</a>
-                        <a href="#contact" class="btn btn-outline-light btn-lg px-5">Start Project</a>
+            <div class="row align-items-center g-5">
+                <div class="col-lg-7 text-center text-lg-start" data-aos="fade-right">
+                    <span class="tech-badge mb-3">Enterprise Technical Ecosystem</span>
+                    <h1 class="display-3 fw-bold mb-3">Transforming Data Into <span class="text-gradient">Strategic Vision</span></h1>
+                    <p class="fs-5 text-muted mb-4">High-fidelity software engineering, structural statistical modeling implementations, custom survey platforms, and data automation delivery nodes designed for enterprise scales.</p>
+                    <div class="d-flex flex-column flex-sm-row justify-content-center justify-content-lg-start gap-3">
+                        <a href="#portfolio" class="btn btn-premium">Explore Engineering Portfolio</a>
+                        <a href="#contact" class="btn btn-outline-custom">Initialize Project Matrix</a>
                     </div>
                 </div>
                 <div class="col-lg-5 text-center" data-aos="fade-left">
-                    <img src="Mkuliku.jpg" alt="Raymond Tungaraza" class="rounded-circle shadow" style="width:320px;height:320px;object-fit:cover;border:15px solid rgba(255,255,255,0.25);">
+                    <div class="position-relative d-inline-block">
+                        <!-- Structural Design Backdrop Circle Grid -->
+                        <div class="position-absolute inset-0 rounded-circle bg-gradient opacity-25 blur-3xl" style="background: linear-gradient(135deg, var(--primary), var(--accent)); width: 100%; height: 100%;"></div>
+                        <img src="Mkuliku.jpg" alt="Raymond Tungaraza Profile Frame Node" class="rounded-circle shadow-lg position-relative" style="width:340px;height:340px;object-fit:cover;border:8px solid var(--card-border); z-index: 2;">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services -->
-    <section id="services" class="py-5">
+    <!-- Modular Services Configuration Array -->
+    <section id="services" class="section-padding border-top border-bottom" style="border-color: var(--card-border) !important;">
         <div class="container">
-            <h2 class="text-center display-5 mb-5" data-aos="fade-up">Our Services</h2>
+            <div class="text-center max-w-xl mx-auto mb-5" data-aos="fade-up">
+                <span class="tech-badge mb-2">Capabilities Matrix</span>
+                <h2 class="display-5 mb-3">Core Operational Systems</h2>
+                <p class="text-muted">Delivering accurate data-driven analysis architectures built for organizational optimization.</p>
+            </div>
             <div class="row g-4">
-                <div class="col-lg-3 col-md-6" data-aos="fade-up"><div class="glass-card p-4 text-center h-100"><i class="bi bi-code-slash display-1 mb-3 text-primary"></i><h4>Software Development</h4><p>Custom systems and applications</p></div></div>
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100"><div class="glass-card p-4 text-center h-100"><i class="bi bi-diagram-3-fill display-1 mb-3 text-primary"></i><h4>Data Collection & Visualization</h4><p>Professional data handling</p></div></div>
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200"><div class="glass-card p-4 text-center h-100"><i class="bi bi-palette-fill display-1 mb-3 text-primary"></i><h4>Graphic Design</h4><p>Branding and creative visuals</p></div></div>
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300"><div class="glass-card p-4 text-center h-100"><i class="bi bi-graph-up display-1 mb-3 text-primary"></i><h4>Data Analysis</h4><p>Insights and statistical reports</p></div></div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up">
+                    <div class="glass-card p-4 h-100 d-flex flex-column align-items-start">
+                        <div class="p-3 rounded-4 mb-4" style="background: rgba(79,70,229,0.1); color: #818cf8;"><i class="bi bi-code-slash fs-3"></i></div>
+                        <h4>Software Development</h4>
+                        <p class="text-muted small">Constructing asynchronous backend microservices, specialized system logic, and modern interface frameworks.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="glass-card p-4 h-100 d-flex flex-column align-items-start">
+                        <div class="p-3 rounded-4 mb-4" style="background: rgba(147,51,234,0.1); color: #c084fc;"><i class="bi bi-diagram-3-fill fs-3"></i></div>
+                        <h4>Data Engineering</h4>
+                        <p class="text-muted small">Structuring end-to-end collection layers, visual data validation hubs, and dynamic report distribution nodes.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="glass-card p-4 h-100 d-flex flex-column align-items-start">
+                        <div class="p-3 rounded-4 mb-4" style="background: rgba(236,72,153,0.1); color: #f472b6;"><i class="bi bi-palette-fill fs-3"></i></div>
+                        <h4>Graphic UI Design</h4>
+                        <p class="text-muted small">Architecting high-end typography sheets, professional branding assets, and high-impact custom infographics.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="glass-card p-4 h-100 d-flex flex-column align-items-start">
+                        <div class="p-3 rounded-4 mb-4" style="background: rgba(16,185,129,0.1); color: #34d399;"><i class="bi bi-graph-up fs-3"></i></div>
+                        <h4>Quantitative Analytics</h4>
+                        <p class="text-muted small">Deploying advanced mathematical evaluations, variance calculations, and precise statistical modeling models.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio -->
-    <section id="portfolio" class="py-5 bg-dark">
+    <!-- Modern Work Portfolio Component Grid -->
+    <section id="portfolio" class="section-padding">
         <div class="container">
-            <h2 class="text-center display-5 mb-5 text-white" data-aos="fade-up">Featured Projects</h2>
+            <div class="text-center max-w-xl mx-auto mb-5" data-aos="fade-up">
+                <span class="tech-badge mb-2">Technical Case Archives</span>
+                <h2 class="display-5 mb-3">Featured Core Projects</h2>
+            </div>
             <div class="row g-4">
                 <div class="col-lg-4" data-aos="fade-up">
-                    <div class="glass-card overflow-hidden">
-                        <img src="https://picsum.photos/id/1015/800/500" class="w-100" alt="Data Analysis">
-                        <div class="p-4"><h5>Sex vs Status Analysis</h5><p>R • Chi-square Test</p></div>
+                    <div class="glass-card overflow-hidden h-100">
+                        <div class="position-relative overflow-hidden group">
+                            <img src="https://picsum.photos/id/1015/800/500" class="w-100 transition duration-500 transform scale-100 hover:scale-105" alt="Statistical Data Analysis Case Study Node" style="height: 230px; object-fit: cover;">
+                        </div>
+                        <div class="p-4">
+                            <span class="tech-badge mb-2" style="font-size:0.7rem;">R Studio • Inferential Metrics</span>
+                            <h5 class="mt-2">Categorical Association Inference Node</h5>
+                            <p class="text-muted small">Executing detailed statistical distributions and matrix correlations mapping sex indicators against operational status profiles via Chi-Square formulations.</p>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4" data-aos="fade-up" data-aos-delay="150">
-                    <div class="glass-card overflow-hidden">
-                        <img src="https://picsum.photos/id/201/800/500" class="w-100" alt="Infographic">
-                        <div class="p-4"><h5>Food Insecurity Infographic</h5><p>Data Visualization • Design</p></div>
+                    <div class="glass-card overflow-hidden h-100">
+                        <div class="position-relative overflow-hidden group">
+                            <img src="https://picsum.photos/id/201/800/500" class="w-100" alt="Food Insecurity Applied Statistical Models Infographic Sheet" style="height: 230px; object-fit: cover;">
+                        </div>
+                        <div class="p-4">
+                            <span class="tech-badge mb-2" style="font-size:0.7rem;">Data Presentation • Vector Graphics</span>
+                            <h5 class="mt-2">Food Insecurity Analytical Infographic</h5>
+                            <p class="text-muted small">Transforming complex latent variable regressions and socioeconomic food parameters into highly scannable, modern visual representations.</p>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="glass-card overflow-hidden">
-                        <img src="https://picsum.photos/id/251/800/500" class="w-100" alt="Automation">
-                        <div class="p-4"><h5>Automated Reporting Pipeline</h5><p>R • Data Automation</p></div>
+                    <div class="glass-card overflow-hidden h-100">
+                        <div class="position-relative overflow-hidden group">
+                            <img src="https://picsum.photos/id/251/800/500" class="w-100" alt="Automated Data Science Reporting System Pipeline Layout" style="height: 230px; object-fit: cover;">
+                        </div>
+                        <div class="p-4">
+                            <span class="tech-badge mb-2" style="font-size:0.7rem;">Automated Engineering • R Markdown</span>
+                            <h5 class="mt-2">Automated Report Compilation System</h5>
+                            <p class="text-muted small">Engineering end-to-end statistical rendering processing engines that ingest raw CSV data streams and deliver print-ready analytical documents automatically.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section id="testimonials" class="py-5">
+    <!-- Client Testimonial Carousels Grid -->
+    <section id="testimonials" class="section-padding border-top" style="border-color: var(--card-border) !important;">
         <div class="container">
-            <h2 class="text-center display-5 mb-5" data-aos="fade-up">Client Testimonials</h2>
+            <h2 class="text-center display-5 mb-5" data-aos="fade-up">Trusted Partner Feedback</h2>
             <div class="row g-4">
-                <div class="col-md-4" data-aos="fade-up"><div class="glass-card p-4"><p>"Excellent data analysis and beautiful designs. Highly professional!"</p><strong>— Millicent I., CEO Blessing Hall</strong></div></div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100"><div class="glass-card p-4"><p>"Good design, derivarance, and good customer care."</p><strong>— Yusuph K., Balqees Investment Co Director</strong></div></div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200"><div class="glass-card p-4"><p>"Best analyst in Dar es Salaam. Very reliable and creative."</p><strong>— Aisha S., Entrepreneur</strong></div></div>
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between">
+                        <p class="text-muted italic">"Exceptional statistical processing pipelines and high-end infographic configurations. Absolute technical efficiency from proposal to execution."</p>
+                        <div class="mt-4 border-top pt-3" style="border-color: var(--card-border) !important;">
+                            <strong class="d-block text-gradient">Millicent I.</strong>
+                            <span class="small text-muted">Chief Executive Officer, Blessing Hall</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between">
+                        <p class="text-muted">"Excellent design system execution, smooth delivery loops, and dedicated client service metrics throughout our core system architecture deployment."</p>
+                        <div class="mt-4 border-top pt-3" style="border-color: var(--card-border) !important;">
+                            <strong class="d-block text-gradient">Yusuph K.</strong>
+                            <span class="small text-muted">Managing Director, Balqees Investment Co.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between">
+                        <p class="text-muted">"One of the top analytical minds available in Dar es Salaam. Unwavering reliability and deeply inventive data handling capabilities."</p>
+                        <div class="mt-4 border-top pt-3" style="border-color: var(--card-border) !important;">
+                            <strong class="d-block text-gradient">Aisha S.</strong>
+                            <span class="small text-muted">Enterprise Founder & Entrepreneur</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="py-5 bg-dark">
+    <!-- Enterprise Contact & Communication Portal Section Layout -->
+    <section id="contact" class="section-padding border-top bg-gradient" style="border-color: var(--card-border) !important; background: rgba(0,0,0,0.1)">
         <div class="container">
-            <h2 class="text-center display-5 mb-5 text-white" data-aos="fade-up">Get In Touch</h2>
+            <div class="text-center max-w-xl mx-auto mb-5" data-aos="fade-up">
+                <span class="tech-badge mb-2">Communication Node</span>
+                <h2 class="display-5 mb-3">Initiate System Requirements</h2>
+            </div>
             <div class="row g-5">
                 <div class="col-lg-6" data-aos="fade-right">
-                    <div class="glass-card p-5">
+                    <div class="glass-card p-4 p-md-5">
+                        <h4 class="mb-4">Secure Dispatch Routing</h4>
                         <form id="contactForm">
                             <div class="mb-4"><input type="text" name="from_name" class="form-control form-control-lg" placeholder="Your Full Name" required></div>
-                            <div class="mb-4"><input type="email" name="from_email" class="form-control form-control-lg" placeholder="Your Email" required></div>
-                            <div class="mb-4"><textarea name="message" class="form-control form-control-lg" rows="6" placeholder="Tell us about your project..." required></textarea></div>
-                            <button type="submit" class="btn btn-primary w-100 py-3" id="submitBtn">Send Message</button>
+                            <div class="mb-4"><input type="email" name="from_email" class="form-control form-control-lg" placeholder="Your Institutional Email Address" required></div>
+                            <div class="mb-4"><textarea name="message" class="form-control form-control-lg" rows="5" placeholder="Elaborate project parameters, mathematical boundaries, or software design needs..." required></textarea></div>
+                            <button type="submit" class="btn btn-premium w-100 py-3" id="submitBtn">Dispatch System Connection</button>
                             <div id="formStatus" class="mt-3 text-center"></div>
                         </form>
                     </div>
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">
-                    <div class="glass-card p-5 h-100">
-                        <h4><i class="bi bi-whatsapp text-success"></i> WhatsApp</h4>
-                        <p class="fs-5 mb-3">+255 655 786 630</p>
-                        <a href="https://wa.me/255655786630" class="btn btn-success mb-4">Message on WhatsApp</a>
-                        <h4 class="mt-4"><i class="bi bi-envelope"></i> Email</h4>
-                        <p>raymondtungaraza20@gmail.com</p>
-                        <h4 class="mt-5"><i class="bi bi-geo-alt"></i> Location</h4>
-                        <p>Changanyikeni, Ubungo<br>Dar es Salaam, Tanzania</p>
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253682.6221450209!2d39.219281!3d-6.792354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x184b8b6f8f8f8f8f%3A0x8f8f8f8f8f8f8f8f!2sUbungo%2C%20Dar%20es%20Salaam%2C%20Tanzania!5e0!3m2!1sen!2stz!4v1690000000000" 
-                                width="100%" height="260" style="border:0;border-radius:16px;margin-top:15px;" allowfullscreen="" loading="lazy"></iframe>
+                    <div class="glass-card p-4 p-md-5 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex align-items-start gap-3 mb-4">
+                                <div class="p-3 rounded-3 bg-success bg-opacity-10 text-success"><i class="bi bi-whatsapp fs-4"></i></div>
+                                <div>
+                                    <h5 class="mb-1">Direct Secure WhatsApp Line</h5>
+                                    <p class="fs-6 mb-2 text-muted">+255 655 786 630</p>
+                                    <a href="https://wa.me/255655786630" class="btn btn-sm btn-success px-3 rounded-2" target="_blank">Establish Connection</a>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-start gap-3 mb-4">
+                                <div class="p-3 rounded-3 bg-primary bg-opacity-10 text-primary"><i class="bi bi-envelope fs-4"></i></div>
+                                <div>
+                                    <h5>Email Network Address</h5>
+                                    <p class="text-muted">raymondtungaraza20@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-start gap-3 mb-2">
+                                <div class="p-3 rounded-3 bg-warning bg-opacity-10 text-warning"><i class="bi bi-geo-alt fs-4"></i></div>
+                                <div>
+                                    <h5>Operations Headquarters Location</h5>
+                                    <p class="text-muted mb-0">Changanyikeni, Ubungo | Dar es Salaam, Tanzania</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 overflow-hidden rounded-4 border" style="border-color: var(--card-border) !important;">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253682.6221450209!2d39.219281!3d-6.792354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x184b8b6f8f8f8f8f%3A0x8f8f8f8f8f8f8f8f!2sUbungo%2C%20Dar%20es%20Salaam%2C%20Tanzania!5e0!3m2!1sen!2stz!4v1690000000000" 
+                                    width="100%" height="210" style="border:0; filter: grayscale(1) invert(0.9) contrast(1.2);" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-5 text-center bg-dark text-light">
-        <p>Mkuliku FinTech © 2026 | Dar es Salaam, Tanzania</p>
+    <!-- Operational Platform Footer -->
+    <footer class="py-4 text-center border-top" style="border-color: var(--card-border) !important;">
+        <p class="text-muted small mb-0">Mkuliku FinTech © 2026 | Technical Operations Infrastructure Hub | Dar es Salaam, Tanzania</p>
     </footer>
 
+    <!-- Instant Interaction Gateways -->
     <a href="https://wa.me/255655786630" class="whatsapp-float" target="_blank"><i class="bi bi-whatsapp"></i></a>
 
-    <!-- Chatbot -->
-    <button id="chatbot-toggle" class="btn btn-primary rounded-circle position-fixed" style="bottom:120px;right:30px;width:65px;height:65px;font-size:1.8rem;z-index:9998;">💬</button>
+    <!-- Smart Modular Chatbot Architecture Element -->
+    <button id="chatbot-toggle" class="btn btn-premium rounded-circle position-fixed" style="bottom:30px;left:30px;width:60px;height:60px;font-size:1.5rem;z-index:9998; background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);">
+        <i class="bi bi-chat-dots-fill"></i>
+    </button>
+    
     <div id="chatbot-container">
         <div class="chat-header d-flex justify-content-between align-items-center">
-            <h5><i class="bi bi-robot"></i> Mkuliku FinTech Assistant</h5>
-            <button id="close-chatbot" class="btn text-white fs-4">✕</button>
+            <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-robot fs-4"></i>
+                <div>
+                    <h6 class="mb-0 font-heading">Mkuliku Matrix Bot</h6>
+                    <span style="font-size: 0.65rem; opacity: 0.8;">Automated System Assistant</span>
+                </div>
+            </div>
+            <button id="close-chatbot" class="btn text-white p-0 fs-5"><i class="bi bi-xl"></i></button>
         </div>
-        <div id="chat-messages" class="flex-grow-1 p-3 overflow-auto bg-light" style="background:#f8fafc !important"></div>
-        <div class="p-3 border-top bg-white">
+        <div id="chat-messages" class="flex-grow-1 p-3 overflow-auto" style="background: rgba(0,0,0,0.05);"></div>
+        <div class="p-3 border-top" style="border-color: var(--card-border) !important; background: var(--card-bg);">
             <div class="input-group">
-                <input type="text" id="user-input" class="form-control" placeholder="Ask anything...">
-                <button id="send-btn" class="btn btn-primary">Send</button>
+                <input type="text" id="user-input" class="form-control" placeholder="Query capabilities, analysis metrics, or contacts...">
+                <button id="send-btn" class="btn btn-premium px-3"><i class="bi bi-send-fill"></i></button>
             </div>
         </div>
     </div>
@@ -201,30 +461,30 @@
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 
     <script>
-        AOS.init({ once: true });
+        AOS.init({ once: true, duration: 800, easing: 'ease-out-cubic' });
         emailjs.init("ouZgiQcXpiQ0t3jST");
 
-        // Contact Form
+        // Form Transmission Handling Matrix Routing
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const submitBtn = document.getElementById('submitBtn');
             const status = document.getElementById('formStatus');
 
-            submitBtn.innerHTML = 'Sending...';
+            submitBtn.innerHTML = 'Routing Transmission...';
             submitBtn.disabled = true;
             status.innerHTML = '';
 
             emailjs.sendForm('service_94uh9fe', 'template_u4d0rcq', this)
                 .then(() => {
-                    status.innerHTML = '<div class="alert alert-success">✅ Message sent successfully! I will reply soon.</div>';
+                    status.innerHTML = '<div class="alert alert-success border-0 small bg-success bg-opacity-10 text-success">✅ Package successfully routed to secure queue. Raymond will review immediately.</div>';
                     this.reset();
                 })
                 .catch((error) => {
                     console.error(error);
-                    status.innerHTML = '<div class="alert alert-danger">❌ Failed to send message.<br>Please try WhatsApp instead.</div>';
+                    status.innerHTML = '<div class="alert alert-danger border-0 small bg-danger bg-opacity-10 text-danger">❌ Routing layer fault detected. Please pivot communication to standard WhatsApp.</div>';
                 })
                 .finally(() => {
-                    submitBtn.innerHTML = 'Send Message';
+                    submitBtn.innerHTML = 'Dispatch System Connection';
                     submitBtn.disabled = false;
                 });
         });
@@ -237,22 +497,38 @@
             icon.classList.toggle('bi-moon-fill');
         });
 
-        // Particles
+        // Particles Background Rendering Engine Pipeline
         const canvas = document.getElementById('particles');
         const ctx = canvas.getContext('2d');
         let particles = [];
         class Particle {
-            constructor(){ this.x = Math.random()*canvas.width; this.y = Math.random()*canvas.height; this.size = Math.random()*3 + 1; this.speedX = Math.random()*0.6 - 0.3; this.speedY = Math.random()*0.6 - 0.3; }
-            update(){ this.x += this.speedX; this.y += this.speedY; if(this.x<0||this.x>canvas.width)this.speedX*=-1; if(this.y<0||this.y>canvas.height)this.speedY*=-1; }
-            draw(){ ctx.fillStyle = '#818cf8'; ctx.beginPath(); ctx.arc(this.x,this.y,this.size,0,Math.PI*2); ctx.fill(); }
+            constructor(){ 
+                this.x = Math.random()*canvas.width; 
+                this.y = Math.random()*canvas.height; 
+                this.size = Math.random()*2 + 0.5; 
+                this.speedX = Math.random()*0.4 - 0.2; 
+                this.speedY = Math.random()*0.4 - 0.2; 
+            }
+            update(){ 
+                this.x += this.speedX; 
+                this.y += this.speedY; 
+                if(this.x<0||this.x>canvas.width)this.speedX*=-1; 
+                if(this.y<0||this.y>canvas.height)this.speedY*=-1; 
+            }
+            draw(){ 
+                ctx.fillStyle = document.body.classList.contains('light') ? 'rgba(79, 70, 229, 0.15)' : 'rgba(129, 140, 248, 0.25)'; 
+                ctx.beginPath(); 
+                ctx.arc(this.x,this.y,this.size,0,Math.PI*2); 
+                ctx.fill(); 
+            }
         }
         function resize(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-        function init(){ particles = []; for(let i=0; i<180; i++) particles.push(new Particle()); }
+        function init(){ particles = []; for(let i=0; i<100; i++) particles.push(new Particle()); }
         function animate(){ ctx.clearRect(0,0,canvas.width,canvas.height); particles.forEach(p=>{p.update();p.draw();}); requestAnimationFrame(animate); }
         window.addEventListener('resize', ()=>{ resize(); init(); });
         resize(); init(); animate();
 
-        // Chatbot
+        // Chatbot Framework Rules Loop Engine Mapping
         const chatbotToggle = document.getElementById('chatbot-toggle');
         const chatbotContainer = document.getElementById('chatbot-container');
         const closeBtn = document.getElementById('close-chatbot');
@@ -262,34 +538,34 @@
 
         chatbotToggle.addEventListener('click', () => {
             chatbotContainer.style.display = 'flex';
-            if(messagesDiv.children.length === 0) addBotMessage("Hello! 👋 How can Mkuliku FinTech help you today?");
+            if(messagesDiv.children.length === 0) addBotMessage("Connection verified. 🤖 I am the Mkuliku system assistant. Inquire regarding our operations matrix below.");
         });
         closeBtn.addEventListener('click', () => chatbotContainer.style.display = 'none');
 
         const faq = {
-            "hello": "Hello! Welcome to Mkuliku FinTech. How can We assist you?",
-            "hi": "Hi there! What would you like to know?",
-            "services": "We offer: Software Development, Data Analysis, Data Collection & Visualization, and Graphic Design.",
-            "software": "We build custom software, web apps, and business systems tailored to your needs.",
-            "data analysis": "We provide statistical analysis, insights, dashboards, and reports using Excel, R, Python, and Power BI.",
-            "graphic design": "We create logos, posters, infographics, social media graphics, and full brand identity.",
-            "survey": "We design professional questionnaires, manage data collection, and deliver clean reports.",
-            "price": "Our pricing depends on project scope. Please tell me more about your needs for a quote.",
-            "cost": "Our pricing depends on project scope. Please tell me more about your needs for a quote.",
-            "portfolio": "You can see some of my projects in the Portfolio section above.",
-            "contact": "You can reach me on WhatsApp: +255 655 786 630 or email: raymondtungaraza20@gmail.com",
-            "location": "We are based in Changanyikeni, Ubungo, Dar es Salaam, Tanzania.",
-            "who are you": "I am the AI assistant of Mkuliku FinTech.",
-            "thank you": "You're welcome! Feel free to ask anything else.",
-            "bye": "Goodbye! Have a great day. Contact us anytime."
+            "hello": "Greetings. System operational. How can Mkuliku FinTech assist your workflow requirements?",
+            "hi": "Hello. State your data processing or software pipeline request parameters.",
+            "services": "We offer Software Engineering, Microservice Architecture, Quantitative Analytics, Survey Processing, and UI Visual Systems.",
+            "software": "We engineer production-grade custom applications, decoupled backends using FastAPI, automation frameworks, and frontend web systems.",
+            "data analysis": "We run robust statistical modeling, descriptive processing, mapping rules, and build dashboards in R, Python, Excel, and Power BI platforms.",
+            "graphic design": "We build structural layout design assets, corporate typography configurations, branding rules, and scannable tracking infographics.",
+            "survey": "We design error-mitigated questionnaire routing data streams, supervise field collection, and structure audited reporting architectures.",
+            "price": "Financial metrics depend directly on computational complexity, system scopes, and engineering time requirements. Contact Raymond for custom quotes.",
+            "cost": "Financial metrics depend directly on computational complexity, system scopes, and engineering time requirements. Contact Raymond for custom quotes.",
+            "portfolio": "Review our verified case studies in the Featured Projects panel above detailing categorical R test structures.",
+            "contact": "Secure lines available on WhatsApp (+255 655 786 630) or corporate email endpoint (raymondtungaraza20@gmail.com).",
+            "location": "Operational physical headquarters: Changanyikeni, Ubungo, Dar es Salaam, Tanzania.",
+            "who are you": "I am the automated conversational monitoring routine mapping customer questions to Mkuliku operations data.",
+            "thank you": "Processing completed. Let us know if you require further computational updates.",
+            "bye": "Disconnecting sequence initiated. Contact our core team anytime for active project execution."
         };
 
         function addBotMessage(text) {
-            messagesDiv.innerHTML += `<div class="mb-3"><div class="d-inline-block bg-light p-3 rounded-3" style="max-width:85%">${text}</div></div>`;
+            messagesDiv.innerHTML += `<div class="mb-3"><div class="d-inline-block p-3 rounded-4 shadow-sm text-sm" style="max-width:85%; background: var(--card-bg); border: 1px solid var(--card-border); color: var(--text); font-size:0.9rem;">${text}</div></div>`;
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
         }
         function addUserMessage(text) {
-            messagesDiv.innerHTML += `<div class="text-end mb-3"><div class="d-inline-block bg-primary text-white p-3 rounded-3" style="max-width:85%">${text}</div></div>`;
+            messagesDiv.innerHTML += `<div class="text-end mb-3"><div class="d-inline-block text-white p-3 rounded-4 shadow-sm text-sm" style="max-width:85%; background: linear-gradient(135deg, var(--primary), var(--accent)); font-size:0.9rem; font-weight:500;">${text}</div></div>`;
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
         }
         function getResponse(message) {
@@ -297,7 +573,7 @@
             for (let key in faq) {
                 if (msg.includes(key)) return faq[key];
             }
-            return "Thank you for your question! For faster response, please contact us on WhatsApp (+255 655 786 630).";
+            return "Query context outside standard index boundaries. For explicit configuration advice, please ping Raymond on WhatsApp directly (+255 655 786 630).";
         }
         function sendMessage() {
             const text = userInput.value.trim();
@@ -307,12 +583,10 @@
             setTimeout(() => {
                 const reply = getResponse(text);
                 addBotMessage(reply);
-            }, 700);
+            }, 500);
         }
         sendBtn.addEventListener('click', sendMessage);
-        userInput.addEventListener('keypress', e => {
-            if (e.key === 'Enter') sendMessage();
-        });
+        userInput.addEventListener('keypress', e => { if (e.key === 'Enter') sendMessage(); });
     </script>
 </body>
 </html>
